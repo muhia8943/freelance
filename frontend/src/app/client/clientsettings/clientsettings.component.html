@@ -1,0 +1,58 @@
+<body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">UniTask</div>
+        <ul class="nav">
+            <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+            <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+            <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+            <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+            <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+          </ul>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+        <h2>Settings</h2>
+        <div class="settings-container">
+            <!-- Account Settings -->
+            <div class="settings-box">
+                <h3>Account Settings</h3>
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Your username">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Your email">
+                
+                <button class="save-btn">Save Changes</button>
+            </div>
+  
+            <!-- Security Settings -->
+            <div class="settings-box">
+                <h3>Security</h3>
+                <label for="password">New Password</label>
+                <input type="password" id="password" placeholder="Enter new password">
+                
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new password">
+                
+                <button class="save-btn">Update Password</button>
+            </div>
+  
+            <!-- Notification Settings -->
+            <div class="settings-box">
+                <h3>Notifications</h3>
+                <label><input type="checkbox" checked> Email Notifications</label>
+                <label><input type="checkbox"> SMS Notifications</label>
+                <label><input type="checkbox"> Job Alerts</label>
+                
+                <button class="save-btn">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+    </div>
+  </body>

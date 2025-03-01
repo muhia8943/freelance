@@ -1,0 +1,215 @@
+
+<body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGMAZpMhgP1mygh11ZOcFwaSuEZQOm9b-Mw&s" alt=""></div>
+        <ul class="nav">
+          <li><a routerLink="/userdashboard"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a routerLink="/discover"><i class="fas fa-compass"></i> <span>Discover</span></a></li>
+          <li><a routerLink="/myjobs"><i class="fas fa-briefcase"></i> <span>My Jobs</span></a></li>
+          <li><a routerLink="/profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+          <li><a routerLink="/chat"><i class="fas fa-comments"></i> <span>Chat</span></a></li>
+          <li><a routerLink="/settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+          <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a></li>
+      </ul>      
+        
+      </div>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Header -->
+        <header>
+          <h1>Welcome Back, Lincoln Muhia!</h1>
+          <div class="search-bar">
+            <input type="text" placeholder="Search jobs, clients, or projects..." />
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </header>
+  
+        <!-- Top Stats -->
+        <section class="stats">
+          <div class="stat-card">
+            <h3>Profile Visit</h3>
+            <p>78,423</p>
+            <span class="stat-change up">15.2% <i class="fas fa-arrow-up"></i></span>
+          </div>
+          <div class="stat-card">
+            <h3>Projects</h3>
+            <p>50,113</p>
+            <span class="stat-change up">7.2% <i class="fas fa-arrow-up"></i></span>
+          </div>
+          <div class="stat-card">
+            <h3>Clients</h3>
+            <p>4,223</p>
+            <span class="stat-change up">8.2% <i class="fas fa-arrow-up"></i></span>
+          </div>
+        </section>
+  
+        <!-- Earnings & Messages Container -->
+        <div class="content-row">
+          <!-- Earnings Section -->
+          <section class="earnings">
+            <div class="earnings-header">
+              <h2>Earnings</h2>
+              <span class="time-range">Month <i class="fas fa-chevron-down"></i></span>
+            </div>
+            <div class="earnings-amount">
+              <h3>$207,803.00</h3>
+              <span class="earning-change up">+11.4%</span>
+            </div>
+            <!-- Placeholder Chart -->
+            <div class="chart-container">
+              <!-- You can integrate a real chart library here (e.g., Chart.js) -->
+              <div class="placeholder-chart">
+                <p>Chart Placeholder</p>
+              </div>
+            </div>
+          </section>
+  
+          <!-- Messages Section -->
+          <section class="messages">
+            <h2>Notificatons</h2>
+            <ul class="message-list">
+              <li>
+                <div class="message-user">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/45.jpg"
+                    alt="User"
+                  />
+                </div>
+                <div class="message-content">
+                  <h4>Altech Inc. HR Department</h4>
+                  <p>Friendly reminder: Employee performance review next week.</p>
+                  <span class="time">4:30 PM</span>
+                </div>
+              </li>
+              <li>
+                <div class="message-user">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/46.jpg"
+                    alt="User"
+                  />
+                </div>
+                <div class="message-content">
+                  <h4>Kevin Zhao</h4>
+                  <p>Just submitted the final design mockup for review.</p>
+                  <span class="time">2:00 PM</span>
+                </div>
+              </li>
+              <li>
+                <div class="message-user">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/47.jpg"
+                    alt="User"
+                  />
+                </div>
+                <div class="message-content">
+                  <h4>IT Support Team</h4>
+                  <p>Scheduled System Maintenance tomorrow at 10 AM.</p>
+                  <span class="time">11:45 AM</span>
+                </div>
+              </li>
+              <li>
+                <div class="message-user">
+                  <img
+                    src="https://randomuser.me/api/portraits/women/48.jpg"
+                    alt="User"
+                  />
+                </div>
+                <div class="message-content">
+                  <h4>Maria Gomez</h4>
+                  <p>Can someone assist me with the client onboarding?</p>
+                  <span class="time">10:30 AM</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+  
+        <!-- Projects Section -->
+        <section class="projects">
+          <div class="projects-header">
+            <h2>Projects</h2>
+            <div class="projects-controls">
+              <input type="text" placeholder="Search..." />
+              <select>
+                <option>Sort By</option>
+                <option>Due Date</option>
+                <option>Progress</option>
+              </select>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Project</th>
+                <th>Service</th>
+                <th>Client</th>
+                <th>Due Date</th>
+                <th>Progress Bar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>Website Redesign</td>
+                <td>Web Design & Development</td>
+                <td>Sweet Treats Bakery</td>
+                <td>April 15, 2024</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 60%"></div>
+                  </div>
+                  60%
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>Social Media Strategy</td>
+                <td>Social Media Management & Marketing</td>
+                <td>Horizon Realty</td>
+                <td>May 30, 2024</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 40%"></div>
+                  </div>
+                  40%
+                </td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>Cybersecurity Upgrade</td>
+                <td>IT Security Consultation</td>
+                <td>InnovexTech Solutions</td>
+                <td>July 20, 2024</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 25%"></div>
+                  </div>
+                  25%
+                </td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>Mobile App Launch</td>
+                <td>App Development</td>
+                <td>NextGen Software</td>
+                <td>September 10, 2024</td>
+                <td>
+                  <div class="progress-bar">
+                    <div class="progress" style="width: 80%"></div>
+                  </div>
+                  80%
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>

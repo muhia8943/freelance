@@ -1,0 +1,8 @@
+CREATE PROCEDURE spGetJobById
+    @id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * FROM Jobs WHERE id = @id;
+END;

@@ -1,0 +1,38 @@
+### Freelancer submits completed work
+POST http://localhost:3000/api/job-completion/submit
+Content-Type: application/json
+
+{
+    "job_id": 4,
+    "freelancer_id": 3,
+    "submission_link": "https://drive.google.com/your-work",
+    "notes": "Here is my completed work."
+}
+
+### Client approves job completion
+POST http://localhost:3000/api/job-completion/approve
+Content-Type: application/json
+
+{
+    "submission_id": 1,
+    "client_id": 1
+}
+
+### Client rejects job completion
+POST http://localhost:3000/api/job-completion/reject
+Content-Type: application/json
+
+{
+    "submission_id": 1,
+    "reason": "The work does not meet our requirements."
+}
+
+################################
+### get all submissions
+GET http://localhost:3000/api/jobs/submissions
+
+################################
+### GET SPECIFIC SUBMISSION
+GET http://localhost:3000/api/jobs/client/3
+
+################################

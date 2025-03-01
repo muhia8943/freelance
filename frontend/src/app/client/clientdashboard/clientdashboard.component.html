@@ -1,0 +1,83 @@
+<body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">UniTask</div>
+        <ul class="nav">
+          <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+          <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+          <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+          <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+          <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+          <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        </ul>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+        <header>
+          <h1>Welcome Back, Client!</h1>
+          <div class="search-bar">
+            <input type="text" placeholder="Search freelancers, jobs, or projects...">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+        </header>
+  
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+          <h2>👋 Hello, Client!</h2>
+          <p>Ready to find top talent? Start by discovering freelancers or posting a new job today.</p>
+          <a routerLink="/createjobs">
+            <button>Post a Job</button>
+          </a>
+        </div>
+  
+        <!-- Stats Overview -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>8</h3>
+            <p>Active Jobs</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-users"></i>
+            <h3>15</h3>
+            <p>Freelancers Hired</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>$2,500</h3>
+            <p>Total Spent</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-comment"></i>
+            <h3>5</h3>
+            <p>Unread Messages</p>
+          </div>
+        </div>
+  
+        <!-- Recent Activity -->
+        <div class="activity">
+          <h2>📌 Recent Activity</h2>
+          <ul>
+            <li><i class="fas fa-check-circle"></i> Approved freelancer application</li>
+            <li><i class="fas fa-file-alt"></i> Created a new job posting</li>
+            <li><i class="fas fa-comments"></i> Sent a message to a freelancer</li>
+          </ul>
+        </div>
+  
+        <!-- Upcoming Tasks -->
+        <div class="tasks">
+          <h2>📅 Upcoming Tasks</h2>
+          <ul>
+            <li><i class="fas fa-clock"></i> Review freelancer applications</li>
+            <li><i class="fas fa-briefcase"></i> Interview shortlisted candidates</li>
+            <li><i class="fas fa-dollar-sign"></i> Approve pending invoices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+  

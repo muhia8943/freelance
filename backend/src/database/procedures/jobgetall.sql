@@ -1,0 +1,7 @@
+CREATE PROCEDURE spGetAllJobs
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT * FROM Jobs;
+END;

@@ -1,0 +1,35 @@
+### create a job
+POST http://localhost:3000/api/jobs
+Content-Type: application/json
+
+{
+    "client_id": 1,
+    "title": "Web Development",
+    "description": "Need a full-stack developer for a website.",
+    "required_skills": "React, Node.js, SQL",
+    "budget": 500.00,
+    "deadline": "2025-03-10"
+}
+
+################################
+
+### update a job
+PUT http://localhost:3000/api/jobs/1
+Content-Type: application/json
+
+{
+    "title": "Updated Web Development",
+    "budget": 600.00,
+    "status": "in progress"
+}
+
+################################
+
+### get all jobs
+GET http://localhost:3000/api/jobs
+
+### get a job by ID
+GET http://localhost:3000/api/jobs/1
+
+### delete a job by ID
+DELETE http://localhost:3000/api/jobs/1

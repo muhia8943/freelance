@@ -1,0 +1,39 @@
+### Apply for a Job
+POST http://localhost:3000/api/job-applications/apply
+Content-Type: application/json
+
+{
+    "job_id": 4,
+    "freelancer_id": 3,
+    "cover_letter": "I have experience in this field and would love to work on this job."
+}
+
+################################
+
+### Get Applications by Job
+GET http://localhost:3000/api/job-applications/job/1
+
+################################
+
+### Get Applications by Freelancer
+GET http://localhost:3000/api/job-applications/freelancer/3
+
+################################
+
+### Update Application Status
+PUT http://localhost:3000/api/job-applications/update-status
+Content-Type: application/json
+
+{
+    "applicationId": 3,
+    "status": "accepted"
+}
+
+#####################
+
+### Delete a Job Application
+DELETE http://localhost:3000/api/job-applications/3
+
+#####################
+### Delete a Job Application
+DELETE http://localhost:3000/api/job-applications/3

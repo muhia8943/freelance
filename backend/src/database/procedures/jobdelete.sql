@@ -1,0 +1,8 @@
+CREATE PROCEDURE spDeleteJob
+    @id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM Jobs WHERE id = @id;
+END;

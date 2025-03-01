@@ -1,0 +1,59 @@
+<div class="admin-dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">UniTask Admin</div>
+      <ul class="nav">
+        <li><a routerLink="/admindashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a routerLink="/manageusers"><i class="fas fa-users"></i> Manage Users</a></li>
+        <li><a routerLink="/managejobs"><i class="fas fa-briefcase"></i> Manage Jobs</a></li>
+        <li><a routerLink="/transactions"><i class="fas fa-dollar-sign"></i> Transactions</a></li>
+        <li><a routerLink="/reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
+        <li><a routerLink="/adminsettings"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>Admin Dashboard</h1>
+        <div class="admin-actions">
+          <button><i class="fas fa-bell"></i></button>
+          <button><i class="fas fa-user"></i> Admin</button>
+        </div>
+      </header>
+  
+      <!-- Dashboard Cards -->
+      <div class="dashboard-cards">
+        <div class="card">
+          <h3>Total Users</h3>
+          <p>1,245</p>
+        </div>
+        <div class="card">
+          <h3>Active Jobs</h3>
+          <p>312</p>
+        </div>
+        <div class="card">
+          <h3>Total Earnings</h3>
+          <p>$12,450</p>
+        </div>
+        <div class="card">
+          <h3>Pending Withdrawals</h3>
+          <p>$3,120</p>
+        </div>
+      </div>
+  
+      <!-- Analytics Section -->
+      <div class="analytics">
+        <div class="chart">
+          <h3>Users Growth</h3>
+          <canvas id="usersChart"></canvas>
+        </div>
+        <div class="chart">
+          <h3>Earnings Overview</h3>
+          <canvas id="earningsChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  

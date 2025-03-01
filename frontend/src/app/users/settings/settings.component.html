@@ -1,0 +1,59 @@
+
+<body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGMAZpMhgP1mygh11ZOcFwaSuEZQOm9b-Mw&s" alt=""></div>
+        <ul class="nav">
+          <li><a routerLink="/userdashboard"><i class="fas fa-home"></i> <span>Home</span></a></li>
+          <li><a routerLink="/discover"><i class="fas fa-compass"></i> <span>Discover</span></a></li>
+          <li><a routerLink="/myjobs"><i class="fas fa-briefcase"></i> <span>My Jobs</span></a></li>
+          <li><a routerLink="/profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+          <li><a routerLink="/chat"><i class="fas fa-comments"></i> <span>Chat</span></a></li>
+          <li><a routerLink="/settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+          <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a></li>
+      </ul>      
+     </div>
+     <div class="main-content">
+      <h2>Settings</h2>
+      <div class="settings-container">
+          <!-- Account Settings -->
+          <div class="settings-box">
+              <h3>Account Settings</h3>
+              <label for="username">Username</label>
+              <input type="text" id="username" placeholder="Your username">
+              
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="Your email">
+              
+              <button class="save-btn">Save Changes</button>
+          </div>
+
+          <!-- Security Settings -->
+          <div class="settings-box">
+              <h3>Security</h3>
+              <label for="password">New Password</label>
+              <input type="password" id="password" placeholder="Enter new password">
+              
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" placeholder="Confirm new password">
+              
+              <button class="save-btn">Update Password</button>
+          </div>
+
+          <!-- Notification Settings -->
+          <div class="settings-box">
+              <h3>Notifications</h3>
+              <label><input type="checkbox" checked> Email Notifications</label>
+              <label><input type="checkbox"> SMS Notifications</label>
+              <label><input type="checkbox"> Job Alerts</label>
+              
+              <button class="save-btn">Save Preferences</button>
+          </div>
+      </div>
+  </div>
+    </div>
+  
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </body>

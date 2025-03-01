@@ -1,0 +1,42 @@
+<body>
+
+    <div class="container">
+        <div class="register-box">
+            <h2>Sign Up</h2>
+            <form>
+                <div class="input-group">
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" placeholder="Phone Number" required>
+                </div>
+
+                <div class="input-group">
+                    <select required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="freelancer">Freelancer</option>
+                        <option value="client">Client</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" placeholder="Confirm Password" required>
+                </div>
+
+                <a routerLink="/clientdashboard" class="register-btn">Register</a>
+            </form>
+
+            <p class="login-link">Already have an account? <a routerLink="/login">Login</a></p>
+        </div>
+    </div>
+
+</body>

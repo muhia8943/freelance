@@ -1,0 +1,50 @@
+### Register a New User
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "saml",
+    "email": "eb2.56068.21@student.chuka.ac.ke",
+    "password": "rootpassword",
+    "role": "user"
+}
+
+###
+
+### Login a User
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "eb2.5060.21@student.chuka.ac.ke",
+    "password": "rootpassword"
+}
+
+###
+
+### Get All Users
+GET http://localhost:3000/api/auth/users
+Content-Type: application/json
+
+###
+
+### Delete a User
+DELETE http://localhost:3000/api/auth/users/5
+Content-Type: application/json
+
+###
+
+### Update a User
+PUT http://localhost:3000/api/auth/users/1
+Content-Type: application/json
+
+{
+    "username": "MuhiaSam",
+    "email": "eb2.56060.21@student.chuka.ac.ke",
+    "role": "admin",
+    "phonenumber": "769711882",
+    "profile_picture": "pic.img",
+    "skills":"engineering",
+    "bio": "I am a software engineer with experience in Python and JavaScript"
+}
+

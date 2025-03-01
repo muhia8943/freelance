@@ -1,0 +1,65 @@
+<body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="logo">UniTask</div>
+        <ul class="nav">
+            <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+            <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+            <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+            <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+            <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+          </ul>
+      </div>
+  
+      <!-- Main Content -->
+      <div class="main-content">
+        <header>
+          <h1>Welcome Back, Client!</h1>
+          <div class="search-bar">
+            <input type="text" placeholder="Search freelancers, jobs, or projects...">
+            <button><i class="fas fa-search"></i></button>
+          </div>
+          <div class="discover-freelancers">
+            <header>
+              <h1>Discover Freelancers</h1>
+              <div class="search-bar">
+                <input type="text" placeholder="Search by skill, name, or category...">
+                <button><i class="fas fa-search"></i></button>
+              </div>
+            </header>
+          
+            <div class="freelancer-list">
+              <div class="freelancer-card">
+                <img src="/assets/profile1.jpg" alt="Freelancer Profile" class="profile-img">
+                <h3>Jane Doe</h3>
+                <p class="skills">Frontend Developer | React, Angular</p>
+                <p class="rating">⭐ 4.9</p>
+                <button class="hire-btn">Hire</button>
+              </div>
+          
+              <div class="freelancer-card">
+                <img src="/assets/profile2.jpg" alt="Freelancer Profile" class="profile-img">
+                <h3>John Smith</h3>
+                <p class="skills">Backend Developer | Node.js, SQL</p>
+                <p class="rating">⭐ 4.7</p>
+                <button class="hire-btn">Hire</button>
+              </div>
+          
+              <div class="freelancer-card">
+                <img src="/assets/profile3.jpg" alt="Freelancer Profile" class="profile-img">
+                <h3>Emily Johnson</h3>
+                <p class="skills">UI/UX Designer | Figma, Adobe XD</p>
+                <p class="rating">⭐ 4.8</p>
+                <button class="hire-btn">Hire</button>
+              </div>
+            </div>
+          </div>
+          
+        </header>
+      </div>
+    </div>
+  </body>
