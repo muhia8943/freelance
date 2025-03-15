@@ -12,3 +12,5 @@ CREATE TABLE Users (
     UpdatedAt DATETIME DEFAULT GETDATE() NOT NULL
 );
 drop TABLE Users
+GO
+EXEC sp_help 'Users';

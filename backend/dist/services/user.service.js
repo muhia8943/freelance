@@ -131,5 +131,18 @@ class AuthService {
                 .execute('spUpdateUser');
         });
     }
+    getProfile(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            console.log("Fetching profile for user ID:", id); // Debugging log
+            const result = yield pool.request()
+                .input('id', sql.Int, id)
+                .query('SELECT * FROM Users WHERE  UserID = @id');
+            if (result.recordset.length > 0) {
+                return result.recordset[0];
+            }
+            return null;
+        });
+    }
 }
 exports.AuthService = AuthService;

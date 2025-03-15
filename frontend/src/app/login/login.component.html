@@ -1,23 +1,17 @@
-<body>
-
-    <div class="container">
-        <div class="login-box">
+<div class="container">
+    <div class="login-container">
+        <form (submit)="onLogin(); $event.preventDefault()">
             <h2>Login</h2>
-            <form>
-                <div class="input-group">
-                    <input type="email" placeholder="Email" required>
-                </div>
-
-                <div class="input-group">
-                    <input type="password" placeholder="Password" required>
-                </div>
-
-                <a routerLink="/userdashboard" class="login-btn">Login</a>
-            </form>
-
-            <p class="register-link">Don't have an account? <a routerLink="/register">Register</a></p>
-            <p class="forgot-password"><a href="#">Forgot Password?</a></p>
-        </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" [(ngModel)]="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" [(ngModel)]="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a routerLink="/register">Sign up</a></p>
     </div>
-
-</body>
+</div>

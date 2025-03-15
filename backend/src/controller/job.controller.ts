@@ -59,4 +59,18 @@ export class JobController {
             res.status(500).json({ error: 'Error deleting job', details: error.message });
         }
     }
+    public async getJobsByClientId(req: Request, res: Response): Promise<void> {
+        try {
+            const clientId = parseInt(req.params.clientId);
+            if (isNaN(clientId)) {
+                res.status(400).json({ error: 'Invalid client ID' });
+                return;
+            }
+
+            const jobs = await jobService.getJobsByClientId(clientId);
+            res.status(200).json(jobs);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving jobs by client ID', details: error.message });
+        }
+    }
 }

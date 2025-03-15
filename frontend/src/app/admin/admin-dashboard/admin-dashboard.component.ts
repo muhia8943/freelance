@@ -1,10 +1,12 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  styleUrls: ['./admin-dashboard.component.css'],
+  imports:[RouterLink]
 })
 export class AdminDashboardComponent implements AfterViewInit {
   ngAfterViewInit() {

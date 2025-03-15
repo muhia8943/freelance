@@ -16,7 +16,7 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "eb2.5060.21@student.chuka.ac.ke",
+    "email": "eb2.56068.21@student.chuka.ac.ke",
     "password": "rootpassword"
 }
 
@@ -35,16 +35,22 @@ Content-Type: application/json
 ###
 
 ### Update a User
-PUT http://localhost:3000/api/auth/users/1
+PUT http://localhost:3000/api/auth/users/2
 Content-Type: application/json
 
 {
-    "username": "MuhiaSam",
-    "email": "eb2.56060.21@student.chuka.ac.ke",
+    "username": "sammy",
+    "email": "eb2.56066.21@student.chuka.ac.ke",
     "role": "admin",
-    "phonenumber": "769711882",
+    "phonenumber": "869721082",
     "profile_picture": "pic.img",
     "skills":"engineering",
-    "bio": "I am a software engineer with experience in Python and JavaScript"
+    "bio": "I am the admin with all permissions"
 }
+#####
 
+### Get Profile by User ID
+GET http://localhost:3000/api/auth/profile/11
+Content-Type: application/json
+
+################################

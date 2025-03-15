@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.deleteUser = exports.getAllUsers = exports.login = exports.register = void 0;
+exports.getProfile = exports.updateUser = exports.deleteUser = exports.getAllUsers = exports.login = exports.register = void 0;
 const user_service_1 = require("../services/user.service");
 const authService = new user_service_1.AuthService();
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield authService.register(req.body);
-        res.status(201).send('User registered successfully');
+        res.status(201).json({ message: 'User registered successfully' });
     }
     catch (error) {
         res.status(500).send(error.message);
@@ -30,7 +30,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.json(result); // Respond with token and role
         }
         else {
-            res.status(401).send('Invalid credentials');
+            res.status(401).json({ error: 'Invalid credentials' });
         }
     }
     catch (error) {
@@ -68,3 +68,22 @@ const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.updateUser = updateUser;
+const getProfile = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = Number(req.params.id);
+        if (isNaN(userId)) {
+            res.status(400).json({ message: "Invalid user ID" });
+            return;
+        }
+        const userProfile = yield authService.getProfile(userId);
+        if (!userProfile) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+        res.status(200).json(userProfile);
+    }
+    catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+exports.getProfile = getProfile;

@@ -49,4 +49,12 @@ export class JobService {
             .input('id', sql.Int, id)
             .execute('spDeleteJob');
     }
+    public async getJobsByClientId(clientId: number): Promise<Job[]> {
+        const pool = await poolPromise;
+        const result = await pool.request()
+            .input('client_id', sql.Int, clientId)
+            .execute('spGetJobsByClientId');
+
+        return result.recordset;
+    }
 }

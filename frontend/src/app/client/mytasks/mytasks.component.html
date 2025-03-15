@@ -24,6 +24,21 @@
             <button><i class="fas fa-search"></i></button>
           </div>
         </header>
+        <section *ngIf="clientJobs.length > 0; else noJobs">
+          <div *ngFor="let job of clientJobs" class="job-details">
+            <h2>{{ job.title }}</h2>
+            <p>{{ job.description }}</p>
+            <div class="job-info">
+              <span><i class="fas fa-dollar-sign"></i> Budget: {{ job.budget }}</span>
+              <span><i class="fas fa-calendar-alt"></i> Deadline: {{ job.deadline }}</span>
+            </div>
+          </div>
+        </section>
+        
+        <ng-template #noJobs>
+          <p>No jobs found.</p>
+        </ng-template>
+        
       </div>
     </div>
   </body>

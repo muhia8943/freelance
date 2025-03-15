@@ -1,15 +1,16 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f4f7f6;
+  color: #333;
+}
   
   /* Dashboard Layout */
   .dashboard {

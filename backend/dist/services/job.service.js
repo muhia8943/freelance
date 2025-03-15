@@ -97,5 +97,14 @@ class JobService {
                 .execute('spDeleteJob');
         });
     }
+    getJobsByClientId(clientId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            const result = yield pool.request()
+                .input('client_id', sql.Int, clientId)
+                .execute('spGetJobsByClientId');
+            return result.recordset;
+        });
+    }
 }
 exports.JobService = JobService;

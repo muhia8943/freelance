@@ -14,14 +14,16 @@ body {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
+  color: white;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 80vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),url(https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2017/04/featurd-freelance3.png);
+  background-size: cover;
+  background-position: center;
 }
 
 .hero nav {

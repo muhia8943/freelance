@@ -33,3 +33,9 @@ GET http://localhost:3000/api/jobs/1
 
 ### delete a job by ID
 DELETE http://localhost:3000/api/jobs/1
+
+################################
+### get a job by clientID
+GET http://localhost:3000/api/jobs/client/9
+Content-Type: application/json
+

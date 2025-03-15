@@ -96,5 +96,20 @@ export class AuthService {
             .input('bio', sql.Text, updateUser.bio)
             .execute('spUpdateUser');
     }
+    public async getProfile(id: number): Promise<user | null> {
+        const pool = await poolPromise;
+        
+        console.log("Fetching profile for user ID:", id); // Debugging log
+    
+        const result = await pool.request()
+            .input('id', sql.Int, id)
+            .query('SELECT * FROM Users WHERE  UserID = @id');
+    
+        if (result.recordset.length > 0) {
+            return result.recordset[0];
+        }
+    
+        return null;
+    }
     
 }

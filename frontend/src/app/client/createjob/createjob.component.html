@@ -1,6 +1,5 @@
 <body>
     <div class="dashboard">
-      <!-- Sidebar -->
       <div class="sidebar">
         <div class="logo">UniTask</div>
         <ul class="nav">
@@ -28,36 +27,38 @@
         <!-- Create Job Section -->
         <section class="create-job">
           <h2>Create a New Job</h2>
-          <form>
+          <form (submit)="onPostJob(); $event.preventDefault()">
             <div class="form-group">
               <label for="job-title">Job Title</label>
-              <input type="text" id="job-title" placeholder="Enter job title">
+              <input type="text" id="job-title" [(ngModel)]="jobTitle" name="title" required>
             </div>
             <div class="form-group">
               <label for="job-description">Job Description</label>
-              <textarea id="job-description" rows="5" placeholder="Describe the job details"></textarea>
+              <textarea id="job-description" rows="5" [(ngModel)]="jobDescription" name="description" required></textarea>
             </div>
             <div class="form-group">
-              <label for="job-category">Category</label>
-              <select id="job-category">
-                <option value="web-development">Web Development</option>
-                <option value="graphic-design">Graphic Design</option>
-                <option value="mobile-apps">Mobile Apps</option>
-                <option value="writing">Writing</option>
-                <option value="marketing">Marketing</option>
+              <label for="job-category">Required Skills</label>
+              <select id="job-category" [(ngModel)]="requiredSkills" name="required_skills" required>
+                <option value="React, Node.js, SQL">Web Development</option>
+                <option value="Photoshop, Illustrator">Graphic Design</option>
+                <option value="Flutter, Swift, Kotlin">Mobile Apps</option>
+                <option value="Copywriting, Content Writing">Writing</option>
+                <option value="SEO, Social Media">Marketing</option>
               </select>
             </div>
             <div class="form-group">
               <label for="job-budget">Budget</label>
-              <input type="number" id="job-budget" placeholder="Enter budget">
+              <input type="number" id="job-budget" [(ngModel)]="jobBudget" name="budget" required>
             </div>
             <div class="form-group">
               <label for="job-deadline">Deadline</label>
-              <input type="date" id="job-deadline">
+              <input type="date" id="job-deadline" [(ngModel)]="jobDeadline" name="deadline" required>
             </div>
             <button type="submit" class="btn-submit">Post Job</button>
           </form>
         </section>
+        
+        
   
         <!-- Active Jobs Section -->
         <section class="active-jobs">
