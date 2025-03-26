@@ -41,4 +41,14 @@ export class ChatController {
             res.status(500).json({ error: (error as Error).message });
         }
     }
+    static async getConversations(req: Request, res: Response) {
+        try {
+            const { user_id } = req.params; // Get user ID from URL params
+            const conversations = await ChatService.getConversations(Number(user_id));
+            res.json(conversations);
+        } catch (error) {
+            res.status(500).json({ error: (error as Error).message });
+        }
+    }
+     
 }

@@ -12,6 +12,7 @@ export class JobService {
             .input('required_skills', sql.Text, job.required_skills)
             .input('budget', sql.Decimal(10, 2), job.budget)
             .input('deadline', sql.Date, job.deadline)
+            .input('coverPhoto', sql.NVarChar, job.coverPhoto) // Added coverPhoto
             .execute('spCreateJob');
     }
 
@@ -40,6 +41,7 @@ export class JobService {
             .input('budget', sql.Decimal(10, 2), updatedJob.budget)
             .input('deadline', sql.Date, updatedJob.deadline)
             .input('status', sql.NVarChar, updatedJob.status)
+            .input('coverPhoto', sql.NVarChar, updatedJob.coverPhoto) // Added coverPhoto
             .execute('spUpdateJob');
     }
 

@@ -6,3 +6,7 @@ CREATE TABLE Conversations (
     FOREIGN KEY (client_id) REFERENCES Users(UserID),
     FOREIGN KEY (freelancer_id) REFERENCES Users(UserID)
 );
+go 
+SELECT * FROM Conversations
+go 
+DELETE FROM Conversations

@@ -16,7 +16,7 @@ GET http://localhost:3000/api/job-applications/job/4
 ################################
 
 ### Get Applications by Freelancer
-GET http://localhost:3000/api/job-applications/freelancer/3
+GET http://localhost:3000/api/job-applications/freelancer/10
 
 ################################
 

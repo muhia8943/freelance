@@ -10,4 +10,5 @@ router.post("/conversation", chatController_1.ChatController.createConversation)
 router.post("/message", chatController_1.ChatController.sendMessage);
 router.get("/messages/:conversation_id", chatController_1.ChatController.getMessages);
 router.patch("/message/read/:message_id", chatController_1.ChatController.markMessageAsRead);
+router.get("/conversations/:user_id", chatController_1.ChatController.getConversations); // ✅ Add this route
 exports.default = router;

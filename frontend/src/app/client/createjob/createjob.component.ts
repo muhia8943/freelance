@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-createjob',
-  imports: [RouterLink, CommonModule,FormsModule],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './createjob.component.html',
   styleUrl: './createjob.component.css'
 })
@@ -15,8 +15,9 @@ export class CreatejobComponent {
   jobTitle: string = '';
   jobDescription: string = '';
   requiredSkills: string = '';
-  jobBudget: number | null = null;  // ✅ Fixed incorrect syntax  // ✅ Renamed from jobCategory to requiredSkills
+  jobBudget: number | null = null;
   jobDeadline: string = '';
+  coverPhoto: string = ''; // New field for cover photo URL
 
   constructor(private jobService: JobService, private loginService: LoginService) {}
 
@@ -27,9 +28,10 @@ export class CreatejobComponent {
       client_id: clientId,
       title: this.jobTitle,
       description: this.jobDescription,
-      required_skills: this.requiredSkills,  // ✅ Match the form input name      
+      required_skills: this.requiredSkills,
       budget: this.jobBudget,
-      deadline: this.jobDeadline
+      deadline: this.jobDeadline,
+      coverPhoto: this.coverPhoto // Include cover photo in job data
     };
 
     this.jobService.createJob(jobData).subscribe({

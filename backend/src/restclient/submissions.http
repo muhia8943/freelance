@@ -33,6 +33,6 @@ GET http://localhost:3000/api/jobs/submissions
 
 ################################
 ### GET SPECIFIC SUBMISSION
-GET http://localhost:3000/api/jobs/client/3
+GET http://localhost:3000/api/jobs/client/10
 
 ################################

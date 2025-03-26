@@ -111,5 +111,23 @@ export class AuthService {
     
         return null;
     }
+    public async getUsersByRole(role: string): Promise<user[]> {
+        const pool = await poolPromise;
+        
+        console.log(`Fetching users with role: ${role}`); // Debugging log
+        
+        const result = await pool.request()
+            .input('role', sql.NVarChar, role)
+            .query('SELECT * FROM Users WHERE Role = @role');
+        
+        return result.recordset;
+    }
+    public async getClients(): Promise<user[]> {
+        return this.getUsersByRole('client');
+    }
+
+    public async getRegularUsers(): Promise<user[]> {
+        return this.getUsersByRole('user');
+    }
     
 }

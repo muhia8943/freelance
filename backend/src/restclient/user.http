@@ -29,22 +29,22 @@ Content-Type: application/json
 ###
 
 ### Delete a User
-DELETE http://localhost:3000/api/auth/users/5
+DELETE http://localhost:3000/api/auth/users/13
 Content-Type: application/json
 
 ###
 
 ### Update a User
-PUT http://localhost:3000/api/auth/users/2
+PUT http://localhost:3000/api/auth/users/6
 Content-Type: application/json
 
 {
-    "username": "sammy",
-    "email": "eb2.56066.21@student.chuka.ac.ke",
-    "role": "admin",
-    "phonenumber": "869721082",
-    "profile_picture": "pic.img",
-    "skills":"engineering",
+    "username": "samuelll",
+    "email": "samuelll@gmail.com",
+    "role": "user",
+    "phonenumber": "860773332",
+    "profile_picture": "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg=",
+    "skills":"Quality Assurance, web development ",
     "bio": "I am the admin with all permissions"
 }
 #####
@@ -54,3 +54,12 @@ GET http://localhost:3000/api/auth/profile/11
 Content-Type: application/json
 
 ################################
+### get clients
+GET http://localhost:3000/api/auth/clients
+Content-Type: application/json
+
+################################
+
+### get users
+GET http://localhost:3000/api/auth/freelancers
+Content-Type: application/json

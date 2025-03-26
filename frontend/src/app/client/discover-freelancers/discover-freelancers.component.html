@@ -17,12 +17,7 @@
   
       <!-- Main Content -->
       <div class="main-content">
-        <header>
-          <h1>Welcome Back, Client!</h1>
-          <div class="search-bar">
-            <input type="text" placeholder="Search freelancers, jobs, or projects...">
-            <button><i class="fas fa-search"></i></button>
-          </div>
+        
           <div class="discover-freelancers">
             <header>
               <h1>Discover Freelancers</h1>
@@ -33,33 +28,20 @@
             </header>
           
             <div class="freelancer-list">
-              <div class="freelancer-card">
-                <img src="/assets/profile1.jpg" alt="Freelancer Profile" class="profile-img">
-                <h3>Jane Doe</h3>
-                <p class="skills">Frontend Developer | React, Angular</p>
-                <p class="rating">⭐ 4.9</p>
-                <button class="hire-btn">Hire</button>
-              </div>
-          
-              <div class="freelancer-card">
-                <img src="/assets/profile2.jpg" alt="Freelancer Profile" class="profile-img">
-                <h3>John Smith</h3>
-                <p class="skills">Backend Developer | Node.js, SQL</p>
-                <p class="rating">⭐ 4.7</p>
-                <button class="hire-btn">Hire</button>
-              </div>
-          
-              <div class="freelancer-card">
-                <img src="/assets/profile3.jpg" alt="Freelancer Profile" class="profile-img">
-                <h3>Emily Johnson</h3>
-                <p class="skills">UI/UX Designer | Figma, Adobe XD</p>
-                <p class="rating">⭐ 4.8</p>
-                <button class="hire-btn">Hire</button>
+              <div *ngFor="let freelancer of freelancers" class="freelancer-card">
+                <img [src]="freelancer.profile_picture || '/assets/default-profile.jpg'" alt="Freelancer Profile" class="profile-img">
+                <h3>{{ freelancer.Username }}</h3>
+                <p class="email"><i class="fas fa-envelope"></i> {{ freelancer.Email || 'No email available' }}</p>
+                <p class="skills"><i class="fas fa-cogs"></i> {{ freelancer.skills || 'No skills listed' }}</p>
+                <p class="bio"><i class="fas fa-user"></i> {{ freelancer.bio || 'No bio provided' }}</p>
+                <button class="hire-btn" (click)="connectToFreelancer(freelancer)">Connect</button>
               </div>
             </div>
+            
+            
           </div>
           
-        </header>
+        
       </div>
     </div>
   </body>

@@ -14,17 +14,21 @@ POST http://localhost:3000/api/chat/message
 Content-Type: application/json
 
 {
-    "conversation_id": 1,
-    "sender_id": 1,
-    "message_text": "Hello, are you available for work?"
+    "conversation_id": 12,
+    "sender_id": 6,
+    "message_text": "Hello, I'm available for work?"
 }
 
 #######
 
-### Get Messages
-GET http://localhost:3000/api/chat/messages/1
+### Get Messages by conversationid
+GET http://localhost:3000/api/chat/messages/12
 
 #####
+### Get Conversations for a User
+GET http://localhost:3000/api/chat/conversations/9
+
+#######
 
 ### Mark Message as Read
 PATCH http://localhost:3000/api/chat/message/read/1

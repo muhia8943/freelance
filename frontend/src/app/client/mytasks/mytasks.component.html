@@ -1,44 +1,70 @@
-<body>
-    <div class="dashboard">
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="logo">UniTask</div>
-        <ul class="nav">
-            <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
-            <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
-            <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
-            <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
-            <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
-            <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
-            <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-          </ul>
+<div class="dashboard">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">UniTask</div>
+    <ul class="nav">
+      <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+      <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+      <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+      <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+      <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+      <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+      <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+      <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header>
+      <h1>Welcome Back, Client!</h1>
+      <div class="search-bar">
+        <input type="text" placeholder="Search freelancers, jobs, or projects...">
+        <button><i class="fas fa-search"></i></button>
       </div>
-  
-      <!-- Main Content -->
-      <div class="main-content">
-        <header>
-          <h1>Welcome Back, Client!</h1>
-          <div class="search-bar">
-            <input type="text" placeholder="Search freelancers, jobs, or projects...">
-            <button><i class="fas fa-search"></i></button>
-          </div>
-        </header>
-        <section *ngIf="clientJobs.length > 0; else noJobs">
-          <div *ngFor="let job of clientJobs" class="job-details">
-            <h2>{{ job.title }}</h2>
-            <p>{{ job.description }}</p>
-            <div class="job-info">
-              <span><i class="fas fa-dollar-sign"></i> Budget: {{ job.budget }}</span>
-              <span><i class="fas fa-calendar-alt"></i> Deadline: {{ job.deadline }}</span>
-            </div>
-          </div>
-        </section>
-        
-        <ng-template #noJobs>
-          <p>No jobs found.</p>
-        </ng-template>
-        
+    </header>
+    
+    <section *ngIf="clientJobs.length > 0; else noJobs">
+      <div *ngFor="let job of clientJobs" class="job-details">
+        <img [src]="job.coverPhoto" alt="Job Image" class="cover-photo">
+        <h2>{{ job.title }}</h2>
+        <p>{{ job.description }}</p>
+        <div class="job-info">
+          <span><i class="fas fa-dollar-sign"></i> Budget: {{ job.budget }}</span>
+          <span><i class="fas fa-calendar-alt"></i> Deadline: {{ job.deadline }}</span>
+        </div>
+        <button (click)="viewApplications(job.id)">View Applications</button>
+      </div>
+    </section>
+
+    <ng-template #noJobs>
+      <p>No jobs found.</p>
+    </ng-template>
+
+    <!-- Applications Modal -->
+    <div class="modal" *ngIf="showApplicationsModal">
+      <div class="modal-content">
+        <span class="close" (click)="showApplicationsModal = false">&times;</span>
+        <h2>Job Applications</h2>
+
+        <div *ngIf="jobApplications.length === 0">
+          <p>No applications for this job yet.</p>
+        </div>
+
+        <div *ngFor="let app of jobApplications" class="application-card">
+          <p><strong>Freelancer:</strong> {{ app.freelancerName }}</p>
+          <p><strong>Cover Letter:</strong> {{ app.coverLetter }}</p>
+          <p><strong>Status:</strong> <span [ngClass]="{
+            'pending': app.status === 'pending',
+            'accepted': app.status === 'accepted',
+            'rejected': app.status === 'rejected'
+          }">{{ app.status }}</span></p>
+
+          <button *ngIf="app.status === 'pending'" (click)="updateApplicationStatus(app.id, 'accepted')">Accept</button>
+          <button *ngIf="app.status === 'pending'" (click)="updateApplicationStatus(app.id, 'rejected')">Reject</button>
+        </div>
       </div>
     </div>
-  </body>
+
+  </div>
+</div>

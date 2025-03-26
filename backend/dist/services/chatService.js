@@ -121,5 +121,37 @@ class ChatService {
             }
         });
     }
+    static getConversations(user_id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const pool = yield sql_config_1.poolPromise;
+                const result = yield pool.request()
+                    .input("user_id", sql.Int, user_id)
+                    .query(`
+                    SELECT c.id AS conversation_id, 
+                           CASE 
+                               WHEN c.client_id = @user_id THEN u_freelancer.Username 
+                               ELSE u_client.Username 
+                           END AS freelancerName,
+                           CASE 
+                               WHEN c.client_id = @user_id THEN u_freelancer.profile_picture 
+                               ELSE u_client.profile_picture 
+                           END AS freelancerProfilePicture,
+                           (SELECT TOP 1 m.message_text 
+                            FROM Messages m 
+                            WHERE m.conversation_id = c.id 
+                            ORDER BY m.sent_at DESC) AS lastMessage
+                    FROM Conversations c
+                    JOIN Users u_client ON c.client_id = u_client.UserID
+                    JOIN Users u_freelancer ON c.freelancer_id = u_freelancer.UserID
+                    WHERE c.client_id = @user_id OR c.freelancer_id = @user_id
+                `);
+                return result.recordset;
+            }
+            catch (error) {
+                throw new Error(error.message);
+            }
+        });
+    }
 }
 exports.ChatService = ChatService;

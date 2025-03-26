@@ -3,12 +3,13 @@ POST http://localhost:3000/api/jobs
 Content-Type: application/json
 
 {
-    "client_id": 1,
-    "title": "Web Development",
+    "client_id": 9,
+    "title": "game Development",
     "description": "Need a full-stack developer for a website.",
     "required_skills": "React, Node.js, SQL",
     "budget": 500.00,
-    "deadline": "2025-03-10"
+    "deadline": "2025-03-10",
+    "coverPhoto": "https://m.media-amazon.com/images/I/81I2gVU9IEL.png"
 }
 
 ################################
@@ -20,7 +21,7 @@ Content-Type: application/json
 {
     "title": "Updated Web Development",
     "budget": 600.00,
-    "status": "in progress"
+    "status": "in progress",
 }
 
 ################################
@@ -29,10 +30,10 @@ Content-Type: application/json
 GET http://localhost:3000/api/jobs
 
 ### get a job by ID
-GET http://localhost:3000/api/jobs/1
+GET http://localhost:3000/api/jobs/4
 
 ### delete a job by ID
-DELETE http://localhost:3000/api/jobs/1
+DELETE http://localhost:3000/api/jobs/7
 
 ################################
 ### get a job by clientID

@@ -16,3 +16,6 @@ ALTER TABLE Jobs ADD
     completed_by INT NULL, 
     completion_notes TEXT NULL,
     FOREIGN KEY (completed_by) REFERENCES Users(UserID);
+GO
+ALTER TABLE Jobs 
+ADD coverPhoto VARCHAR(255) NULL;

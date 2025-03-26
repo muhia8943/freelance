@@ -60,5 +60,17 @@ class ChatController {
             }
         });
     }
+    static getConversations(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { user_id } = req.params; // Get user ID from URL params
+                const conversations = yield chatService_1.ChatService.getConversations(Number(user_id));
+                res.json(conversations);
+            }
+            catch (error) {
+                res.status(500).json({ error: error.message });
+            }
+        });
+    }
 }
 exports.ChatController = ChatController;

@@ -144,5 +144,25 @@ class AuthService {
             return null;
         });
     }
+    getUsersByRole(role) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            console.log(`Fetching users with role: ${role}`); // Debugging log
+            const result = yield pool.request()
+                .input('role', sql.NVarChar, role)
+                .query('SELECT * FROM Users WHERE Role = @role');
+            return result.recordset;
+        });
+    }
+    getClients() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.getUsersByRole('client');
+        });
+    }
+    getRegularUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.getUsersByRole('user');
+        });
+    }
 }
 exports.AuthService = AuthService;

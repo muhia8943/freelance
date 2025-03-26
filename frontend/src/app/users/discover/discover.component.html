@@ -41,33 +41,26 @@
           </div>
         </section>
         <div class="job-container">
-          <div class="job-card">
-              <h2>Frontend Developer</h2>
-              <p class="description">Looking for a skilled frontend developer proficient in React.js and CSS.</p>
-              <p><strong>Budget:</strong> $500</p>
-              <p><strong>Deadline:</strong> 10th Feb 2025</p>
-              <p class="status open">Status: Open</p>
-              <button class="apply-btn">Apply Now</button>
+          <div *ngFor="let job of jobs" class="job-card">
+            <img [src]="job.coverPhoto" alt="Job Image" class="cover-photo">
+            <h3>{{ job.title }}</h3>
+            <p class="description">{{ job.description }}</p>
+            <p><strong>Required Skills:</strong> {{ job.required_skills }}</p>
+            <p><strong>Budget:</strong> ${{ job.budget }}</p>
+            <p><strong>Deadline:</strong> {{ job.deadline | date:'longDate' }}</p>
+            <p class="status" [ngClass]="{
+              'open': job.status === 'open',
+              'progress': job.status === 'in-progress',
+              'closed': job.status === 'completed'
+            }">
+              Status: {{ job.status }}
+            </p>
+            <button class="apply-btn" [disabled]="job.status === 'completed'" (click)="applyForJob(job.id)">
+              {{ job.status === 'completed' ? 'Closed' : 'Apply Now' }}
+            </button>
           </div>
-
-          <div class="job-card">
-              <h2>Backend Developer</h2>
-              <p class="description">Need a Node.js backend developer with experience in MSSQL.</p>
-              <p><strong>Budget:</strong> $800</p>
-              <p><strong>Deadline:</strong> 15th Feb 2025</p>
-              <p class="status progress">Status: In Progress</p>
-              <button class="apply-btn">Apply Now</button>
-          </div>
-
-          <div class="job-card">
-              <h2>UI/UX Designer</h2>
-              <p class="description">Looking for a creative UI/UX designer to design an e-commerce website.</p>
-              <p><strong>Budget:</strong> $600</p>
-              <p><strong>Deadline:</strong> 20th Feb 2025</p>
-              <p class="status closed">Status: Completed</p>
-              <button class="apply-btn disabled">Closed</button>
-          </div>
-      </div>
+        </div>
+        
 
       </div>
     </div>

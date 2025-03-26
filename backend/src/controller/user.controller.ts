@@ -75,3 +75,22 @@ export const getProfile = async (req: Request, res: Response) => {
         res.status(500).send(error.message);
     }
 };
+export class AuthController {
+    public async getClients(req: Request, res: Response): Promise<void> {
+        try {
+            const clients = await authService.getClients();
+            res.status(200).json(clients);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving clients', details: error.message });
+        }
+    }
+
+    public async getRegularUsers(req: Request, res: Response): Promise<void> {
+        try {
+            const users = await authService.getRegularUsers();
+            res.status(200).json(users);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving users', details: error.message });
+        }
+    }
+}

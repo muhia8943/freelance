@@ -1,87 +1,90 @@
 <body>
-    <div class="dashboard">
-      <div class="sidebar">
-        <div class="logo">UniTask</div>
-        <ul class="nav">
-          <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
-          <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
-          <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
-          <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
-          <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
-          <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
-          <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
-          <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-        </ul>
-      </div>
-  
-      <!-- Main Content -->
-      <div class="main-content">
-        <header>
-          <h1>Welcome Back, Client!</h1>
-          <div class="search-bar">
-            <input type="text" placeholder="Search freelancers, jobs, or projects...">
-            <button><i class="fas fa-search"></i></button>
-          </div>
-        </header>
-  
-        <!-- Create Job Section -->
-        <section class="create-job">
-          <h2>Create a New Job</h2>
-          <form (submit)="onPostJob(); $event.preventDefault()">
-            <div class="form-group">
-              <label for="job-title">Job Title</label>
-              <input type="text" id="job-title" [(ngModel)]="jobTitle" name="title" required>
-            </div>
-            <div class="form-group">
-              <label for="job-description">Job Description</label>
-              <textarea id="job-description" rows="5" [(ngModel)]="jobDescription" name="description" required></textarea>
-            </div>
-            <div class="form-group">
-              <label for="job-category">Required Skills</label>
-              <select id="job-category" [(ngModel)]="requiredSkills" name="required_skills" required>
-                <option value="React, Node.js, SQL">Web Development</option>
-                <option value="Photoshop, Illustrator">Graphic Design</option>
-                <option value="Flutter, Swift, Kotlin">Mobile Apps</option>
-                <option value="Copywriting, Content Writing">Writing</option>
-                <option value="SEO, Social Media">Marketing</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="job-budget">Budget</label>
-              <input type="number" id="job-budget" [(ngModel)]="jobBudget" name="budget" required>
-            </div>
-            <div class="form-group">
-              <label for="job-deadline">Deadline</label>
-              <input type="date" id="job-deadline" [(ngModel)]="jobDeadline" name="deadline" required>
-            </div>
-            <button type="submit" class="btn-submit">Post Job</button>
-          </form>
-        </section>
-        
-        
-  
-        <!-- Active Jobs Section -->
-        <section class="active-jobs">
-          <h2>Active Jobs</h2>
-          <div class="job-list">
-            <div class="job-card">
-              <h3>Web Developer Needed</h3>
-              <p>Looking for a skilled web developer to build a responsive website.</p>
-              <div class="job-details">
-                <span><i class="fas fa-dollar-sign"></i> $1,500</span>
-                <span><i class="fas fa-calendar-alt"></i> 10 days left</span>
-              </div>
-            </div>
-            <div class="job-card">
-              <h3>Logo Design</h3>
-              <p>Need a professional logo for my new startup.</p>
-              <div class="job-details">
-                <span><i class="fas fa-dollar-sign"></i> $300</span>
-                <span><i class="fas fa-calendar-alt"></i> 5 days left</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
+  <div class="dashboard">
+    <div class="sidebar">
+      <div class="logo">UniTask</div>
+      <ul class="nav">
+        <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+        <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+        <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+        <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+        <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+      </ul>
     </div>
-  </body>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <header>
+        <h1>Welcome Back, Client!</h1>
+        <div class="search-bar">
+          <input type="text" placeholder="Search freelancers, jobs, or projects...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+      </header>
+
+      <!-- Create Job Section -->
+      <section class="create-job">
+        <h2>Create a New Job</h2>
+        <form (submit)="onPostJob(); $event.preventDefault()">
+          <div class="form-group">
+            <label for="job-title">Job Title</label>
+            <input type="text" id="job-title" [(ngModel)]="jobTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="job-description">Job Description</label>
+            <textarea id="job-description" rows="5" [(ngModel)]="jobDescription" name="description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="job-category">Required Skills</label>
+            <select id="job-category" [(ngModel)]="requiredSkills" name="required_skills" required>
+              <option value="React, Node.js, SQL">Web Development</option>
+              <option value="Photoshop, Illustrator">Graphic Design</option>
+              <option value="Flutter, Swift, Kotlin">Mobile Apps</option>
+              <option value="Copywriting, Content Writing">Writing</option>
+              <option value="SEO, Social Media">Marketing</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="job-budget">Budget</label>
+            <input type="number" id="job-budget" [(ngModel)]="jobBudget" name="budget" required>
+          </div>
+          <div class="form-group">
+            <label for="job-deadline">Deadline</label>
+            <input type="date" id="job-deadline" [(ngModel)]="jobDeadline" name="deadline" required>
+          </div>
+          <!-- New Cover Photo Field -->
+          <div class="form-group">
+            <label for="cover-photo">Cover Photo URL</label>
+            <input type="text" id="cover-photo" [(ngModel)]="coverPhoto" name="cover_photo" placeholder="Enter image URL">
+          </div>
+          <button type="submit" class="btn-submit">Post Job</button>
+        </form>
+      </section>
+
+      <!-- Active Jobs Section -->
+      <section class="active-jobs">
+        <h2>Active Jobs</h2>
+        <div class="job-list">
+          <div class="job-card">
+            <h3>Web Developer Needed</h3>
+            <p>Looking for a skilled web developer to build a responsive website.</p>
+            <div class="job-details">
+              <span><i class="fas fa-dollar-sign"></i> $1,500</span>
+              <span><i class="fas fa-calendar-alt"></i> 10 days left</span>
+            </div>
+          </div>
+          <div class="job-card">
+            <h3>Logo Design</h3>
+            <p>Need a professional logo for my new startup.</p>
+            <div class="job-details">
+              <span><i class="fas fa-dollar-sign"></i> $300</span>
+              <span><i class="fas fa-calendar-alt"></i> 5 days left</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>

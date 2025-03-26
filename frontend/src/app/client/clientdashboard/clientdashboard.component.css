@@ -26,11 +26,7 @@ body {
     padding: 20px;
     transition: width 0.3s ease-in-out;
   }
-  
-  /* Sidebar Hover Effect */
-  .sidebar:hover {
-    width: 260px;
-  }
+
   
   .sidebar .logo {
     font-size: 24px;

@@ -2,6 +2,7 @@ export interface Job {
     id?: number;  // Optional since it's auto-generated
     client_id: number;
     title: string;
+    coverPhoto: string;
     description: string;
     required_skills: string;
     budget: number;
