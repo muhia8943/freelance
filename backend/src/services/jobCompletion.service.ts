@@ -31,32 +31,19 @@ export class JobCompletionService {
             .execute('spRejectJobWork');
     }
     
-}
-export class JobServicetwo {
-    
-    // Get all job submissions (for admins & freelancers)
-    public async getAllSubmissions(): Promise<any[]> {
+    // Get all job submissions
+    public async getAllSubmissions() {
         const pool = await poolPromise;
-        const result = await pool.request().query(`
-            SELECT ja.id, ja.job_id, ja.freelancer_id, ja.submission_url, ja.status, 
-                   j.title AS job_title, u.username AS freelancer_name
-            FROM JobApplications ja
-            JOIN Jobs j ON ja.job_id = j.id
-            JOIN Users u ON ja.freelancer_id = u.UserID
-        `);
+        const result = await pool.request().query('SELECT * FROM JobSubmissions');
         return result.recordset;
     }
 
-    // Get all jobs posted by a specific client
-    public async getClientJobs(clientId: number): Promise<any[]> {
+    // Get submissions by job ID
+    public async getSubmissionsByJobId(jobId: number) {
         const pool = await poolPromise;
         const result = await pool.request()
-            .input('client_id', sql.Int, clientId)
-            .query(`
-                SELECT j.id, j.title, j.description, j.status, j.created_at
-                FROM Jobs j
-                WHERE j.client_id = @client_id
-            `);
+            .input('job_id', sql.Int, jobId)
+            .query('SELECT * FROM JobSubmissions WHERE job_id = @job_id');
         return result.recordset;
     }
 }

@@ -226,3 +226,16 @@ header h1 {
   margin: 10px 0;
   border-radius: 5px;
 }
+.btns{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.btns button{
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #23ced4;
+}

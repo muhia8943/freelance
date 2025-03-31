@@ -77,6 +77,33 @@ export class MyjobsComponent implements OnInit {
       }
     });
   }
-  
+  submitWork(application: any): void {
+  const submissionLink = prompt('Enter the submission link (Google Drive, GitHub, etc.):');
+  const notes = prompt('Enter any additional notes (optional):');
+
+  if (!submissionLink) {
+    alert('Submission link is required.');
+    return;
+  }
+
+  const submissionPayload = {
+    job_id: application.job_id,
+    freelancer_id: this.freelancerId,
+    submission_link: submissionLink,
+    notes: notes || ''
+  };
+
+  this.jobApplicationService.submitJobWork(submissionPayload).subscribe({
+    next: (response) => {
+      alert('Work submitted successfully!');
+      console.log('Submission response:', response);
+    },
+    error: (error) => {
+      console.error('Error submitting work:', error);
+      alert('Failed to submit work. Please try again.');
+    }
+  });
+}
+
 }
 

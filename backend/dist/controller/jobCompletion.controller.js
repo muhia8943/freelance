@@ -9,9 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JobControllertwo = exports.JobCompletionController = void 0;
+exports.JobCompletionController = void 0;
 const jobCompletion_service_1 = require("../services/jobCompletion.service");
-const jobCompletion_service_2 = require("../services/jobCompletion.service");
 const jobCompletionService = new jobCompletion_service_1.JobCompletionService();
 class JobCompletionController {
     submitWork(req, res) {
@@ -50,37 +49,29 @@ class JobCompletionController {
             }
         });
     }
-}
-exports.JobCompletionController = JobCompletionController;
-const jobService = new jobCompletion_service_2.JobServicetwo();
-class JobControllertwo {
-    // Get all job submissions
     getAllSubmissions(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const submissions = yield jobService.getAllSubmissions();
-                res.json(submissions);
+                const submissions = yield jobCompletionService.getAllSubmissions();
+                res.status(200).json(submissions);
             }
             catch (error) {
-                res.status(500).json({ message: "Error fetching submissions", error });
+                res.status(500).json({ error: error.message });
             }
         });
     }
-    // Get all jobs for a specific client
-    getClientJobs(req, res) {
+    // Get submissions by job ID
+    getSubmissionsByJobId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const clientId = parseInt(req.params.clientId);
-                if (isNaN(clientId)) {
-                    return res.status(400).json({ message: "Invalid client ID" });
-                }
-                const jobs = yield jobService.getClientJobs(clientId);
-                res.json(jobs);
+                const { job_id } = req.params;
+                const submissions = yield jobCompletionService.getSubmissionsByJobId(parseInt(job_id));
+                res.status(200).json(submissions);
             }
             catch (error) {
-                res.status(500).json({ message: "Error fetching client jobs", error });
+                res.status(500).json({ error: error.message });
             }
         });
     }
 }
-exports.JobControllertwo = JobControllertwo;
+exports.JobCompletionController = JobCompletionController;

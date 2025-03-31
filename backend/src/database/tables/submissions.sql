@@ -9,3 +9,7 @@ CREATE TABLE JobSubmissions (
     FOREIGN KEY (job_id) REFERENCES Jobs(id) ON DELETE CASCADE,
     FOREIGN KEY (freelancer_id) REFERENCES Users(UserID)
 );
+
+go
+
+select * FROM JobSubmissions

@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "job_id": 4,
     "freelancer_id": 3,
-    "submission_link": "https://drive.google.com/your-work",
+    "submission_link": "https://github.com/muhia8943/freelance.git",
     "notes": "Here is my completed work."
 }
 
@@ -26,13 +26,12 @@ Content-Type: application/json
     "submission_id": 1,
     "reason": "The work does not meet our requirements."
 }
-
 ################################
-### get all submissions
-GET http://localhost:3000/api/jobs/submissions
+### Get all job submissions
+GET http://localhost:3000/api/job-completion/submissions
+Content-Type: application/json
 
-################################
-### GET SPECIFIC SUBMISSION
-GET http://localhost:3000/api/jobs/client/10
+### Get submissions by job ID (replace {job_id} with actual job ID)
+GET http://localhost:3000/api/job-completion/submissions/8
+Content-Type: application/json
 
-################################

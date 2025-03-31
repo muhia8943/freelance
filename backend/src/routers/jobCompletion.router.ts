@@ -1,15 +1,17 @@
 import { Router } from 'express';
 import { JobCompletionController } from '../controller/jobCompletion.controller';
-import { JobControllertwo } from '../controller/jobCompletion.controller'; // ✅ Ensure correct import
 
 const router = Router();
 const jobCompletionController = new JobCompletionController();
-const jobControllertwo = new JobControllertwo();
 
-router.post('/submit', jobCompletionController.submitWork);
-router.post('/approve', jobCompletionController.approveWork);
-router.post('/reject', jobCompletionController.rejectWork);
-router.get('/submissions', jobControllertwo.getAllSubmissions.bind(jobControllertwo)); // ✅ Fix
-// router.get('/client/:clientId', jobControllertwo.getClientJobs.bind(jobControllertwo)); // ✅ Fix
+router.post('/submit', (req, res) => jobCompletionController.submitWork(req, res));
+router.post('/approve', (req, res) => jobCompletionController.approveWork(req, res));
+router.post('/reject', (req, res) => jobCompletionController.rejectWork(req, res));
+
+// Get all submissions
+router.get('/submissions', (req, res) => jobCompletionController.getAllSubmissions(req, res));
+
+// Get submissions by job ID
+router.get('/submissions/:job_id', (req, res) => jobCompletionController.getSubmissionsByJobId(req, res));
 
 export default router;

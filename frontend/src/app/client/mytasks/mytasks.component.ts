@@ -13,10 +13,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './mytasks.component.css'
 })
 export class MytasksComponent implements OnInit {
-  clientJobs: any[] = []; // Stores jobs created by the client
+  clientJobs: any[] = []; 
   selectedJobId: number | null = null;
   jobApplications: any[] = [];
+  jobSubmissions: any[] = []; // Stores job submissions
   showApplicationsModal: boolean = false;
+  showSubmissionsModal: boolean = false;
 
   constructor(
     private jobService: JobService, 
@@ -68,6 +70,46 @@ export class MytasksComponent implements OnInit {
       error: (error) => {
         console.error('Failed to update status:', error);
       }
+    });
+  }
+  viewSubmissions(jobId: number) {
+    this.selectedJobId = jobId;
+    this.viewApplicationsService.getSubmissionsByJob(jobId).subscribe({
+      next: (submissions) => {
+        this.jobSubmissions = submissions;
+        this.showSubmissionsModal = true;
+      },
+      error: (error) => console.error('Failed to fetch submissions:', error)
+    });
+  }
+
+ approveSubmission(submissionId: number) {
+  const clientId = this.loginService.getUserID();
+  
+  if (clientId === null) {
+    console.error('Client ID is null. Unable to approve submission.');
+    return;
+  }
+
+  this.viewApplicationsService.approveSubmission(submissionId, clientId).subscribe({
+    next: () => {
+      alert('Submission approved successfully!');
+      this.jobSubmissions = this.jobSubmissions.filter(sub => sub.id !== submissionId);
+    },
+    error: (error) => console.error('Failed to approve submission:', error)
+  });
+}
+
+  rejectSubmission(submissionId: number) {
+    const reason = prompt("Enter the reason for rejection:");
+    if (!reason) return;
+
+    this.viewApplicationsService.rejectSubmission(submissionId, reason).subscribe({
+      next: () => {
+        alert('Submission rejected.');
+        this.jobSubmissions = this.jobSubmissions.filter(sub => sub.id !== submissionId);
+      },
+      error: (error) => console.error('Failed to reject submission:', error)
     });
   }
 }

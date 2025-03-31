@@ -17,5 +17,8 @@ export class JobApplicationService {
   getApplicationsByFreelancer(freelancerId: number): Observable<any> {
     return this.http.get(`http://localhost:3000/api/job-applications/freelancer/${freelancerId}`);
   }
+  submitJobWork(submissionData: any): Observable<any> {
+    return this.http.post('http://localhost:3000/api/job-completion/submit', submissionData);
+  }
   
 }

@@ -8,6 +8,7 @@ const job_controller_1 = require("../controller/job.controller");
 const router = express_1.default.Router();
 const jobController = new job_controller_1.JobController();
 router.post('/', jobController.createJob);
+router.get('/completed', jobController.getCompletedJobs); // ✅ Move this ABOVE "/:id"
 router.get('/:id', jobController.getJobById);
 router.get('/', jobController.getAllJobs);
 router.put('/:id', jobController.updateJob);

@@ -108,5 +108,14 @@ class JobService {
             return result.recordset;
         });
     }
+    // ✅ Function to get completed jobs
+    getCompletedJobs() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            const result = yield pool.request().execute('spGetCompletedJobs');
+            console.log("Completed Jobs:", result.recordset); // ✅ Add logging
+            return result.recordset;
+        });
+    }
 }
 exports.JobService = JobService;

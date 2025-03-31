@@ -73,4 +73,20 @@ export class JobController {
             res.status(500).json({ error: 'Error retrieving jobs by client ID', details: error.message });
         }
     }
+    // ✅ New Method to Get Completed Jobs
+    public async getCompletedJobs(req: Request, res: Response): Promise<void> {
+        try {
+            const jobs = await jobService.getCompletedJobs();
+            
+            if (jobs.length === 0) {
+                res.status(404).json({ message: 'No completed jobs found' }); // Use this instead
+                return;
+            }
+    
+            res.status(200).json(jobs);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving completed jobs', details: error.message });
+        }
+    }
+    
 }

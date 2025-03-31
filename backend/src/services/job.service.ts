@@ -59,4 +59,13 @@ export class JobService {
 
         return result.recordset;
     }
+    // ✅ Function to get completed jobs
+    public async getCompletedJobs(): Promise<Job[]> {
+        const pool = await poolPromise;
+        const result = await pool.request().execute('spGetCompletedJobs'); 
+
+        console.log("Completed Jobs:", result.recordset); // ✅ Add logging
+        
+        return result.recordset;
+    }
 }

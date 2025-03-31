@@ -40,3 +40,10 @@ DELETE http://localhost:3000/api/jobs/7
 GET http://localhost:3000/api/jobs/client/9
 Content-Type: application/json
 
+################################
+
+### get a jobs completed
+GET http://localhost:3000/api/jobs/completed
+
+################################
+

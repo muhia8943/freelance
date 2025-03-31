@@ -64,15 +64,19 @@
               <span [ngClass]="{
                 'pending': app.status === 'pending',
                 'accepted': app.status === 'accepted',
-                'rejected': app.status === 'rejected'
+                'rejected': app.status === 'rejected',
+                'completed': app.status === 'completed',
+                'under-review': app.status === 'under review',
+                'not-accepted': app.status === 'not accepted'
               }">{{ app.status }}</span>
             </p>
+            
             <p><strong>Applied On:</strong> {{ app.created_at | date:'longDate' }}</p>
           
             <div *ngIf="app.status === 'accepted'" class="buttons">
               <button class="chat-btn" (click)="startChat(app)">Chat</button>
-              <button class="submit-btn">Submit Work</button>
-            </div>
+              <button class="submit-btn" (click)="submitWork(app)">Submit Work</button> 
+             </div>
           </div>
           
         </div>

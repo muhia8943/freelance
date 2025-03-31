@@ -42,7 +42,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JobServicetwo = exports.JobCompletionService = void 0;
+exports.JobCompletionService = void 0;
 const sql_config_1 = require("../config/sql.config");
 const sql = __importStar(require("mssql"));
 class JobCompletionService {
@@ -78,36 +78,23 @@ class JobCompletionService {
                 .execute('spRejectJobWork');
         });
     }
-}
-exports.JobCompletionService = JobCompletionService;
-class JobServicetwo {
-    // Get all job submissions (for admins & freelancers)
+    // Get all job submissions
     getAllSubmissions() {
         return __awaiter(this, void 0, void 0, function* () {
             const pool = yield sql_config_1.poolPromise;
-            const result = yield pool.request().query(`
-            SELECT ja.id, ja.job_id, ja.freelancer_id, ja.submission_url, ja.status, 
-                   j.title AS job_title, u.username AS freelancer_name
-            FROM JobApplications ja
-            JOIN Jobs j ON ja.job_id = j.id
-            JOIN Users u ON ja.freelancer_id = u.UserID
-        `);
+            const result = yield pool.request().query('SELECT * FROM JobSubmissions');
             return result.recordset;
         });
     }
-    // Get all jobs posted by a specific client
-    getClientJobs(clientId) {
+    // Get submissions by job ID
+    getSubmissionsByJobId(jobId) {
         return __awaiter(this, void 0, void 0, function* () {
             const pool = yield sql_config_1.poolPromise;
             const result = yield pool.request()
-                .input('client_id', sql.Int, clientId)
-                .query(`
-                SELECT j.id, j.title, j.description, j.status, j.created_at
-                FROM Jobs j
-                WHERE j.client_id = @client_id
-            `);
+                .input('job_id', sql.Int, jobId)
+                .query('SELECT * FROM JobSubmissions WHERE job_id = @job_id');
             return result.recordset;
         });
     }
 }
-exports.JobServicetwo = JobServicetwo;
+exports.JobCompletionService = JobCompletionService;

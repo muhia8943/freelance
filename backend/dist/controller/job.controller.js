@@ -93,5 +93,21 @@ class JobController {
             }
         });
     }
+    // ✅ New Method to Get Completed Jobs
+    getCompletedJobs(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const jobs = yield jobService.getCompletedJobs();
+                if (jobs.length === 0) {
+                    res.status(404).json({ message: 'No completed jobs found' }); // Use this instead
+                    return;
+                }
+                res.status(200).json(jobs);
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error retrieving completed jobs', details: error.message });
+            }
+        });
+    }
 }
 exports.JobController = JobController;
