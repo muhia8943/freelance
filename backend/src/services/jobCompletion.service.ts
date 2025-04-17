@@ -46,4 +46,17 @@ export class JobCompletionService {
             .query('SELECT * FROM JobSubmissions WHERE job_id = @job_id');
         return result.recordset;
     }
+    public async rateCompletedJob(jobId: number, rating: number): Promise<void> {
+    const pool = await poolPromise;
+
+    if (rating < 1.0 || rating > 5.0) {
+        throw new Error("Rating must be between 1.0 and 5.0");
+    }
+
+    await pool.request()
+        .input('rating', sql.Decimal(2, 1), rating)
+        .input('job_id', sql.Int, jobId)
+        .query('UPDATE Jobs SET ratings = @rating WHERE id = @job_id');
+   }
+
 }

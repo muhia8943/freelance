@@ -43,7 +43,7 @@
   }
   
   .sidebar .nav li {
-    margin: 15px 0;
+    margin: 20px 0;
   }
   
   /* Show Icons Always, Hide Text When Collapsed */
@@ -75,9 +75,10 @@
   }
   /* Main Content Styles */
   .main-content {
-    margin-left: 100px;
+    margin-left: 70px;
     flex: 1;
     padding: 20px;
+    width: auto;
   }
   
   header {
@@ -202,6 +203,7 @@ body {
   padding: 20px;
   text-align: left;
   transition: 0.3s ease-in-out;
+  width: 260px;
 }
 
 .job-card:hover {

@@ -9,8 +9,10 @@
       <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
       <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
       <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+      <li><a routerLink="/payments"><i class="fas fa-sign-out-alt"></i> Payments</a></li>
       <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
       <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+
     </ul>
   </div>
 
@@ -25,24 +27,39 @@
     </header>
     
     <section *ngIf="clientJobs.length > 0; else noJobs">
-      <div *ngFor="let job of clientJobs" class="job-details">
-        <img [src]="job.coverPhoto" alt="Job Image" class="cover-photo">
-        <h2>{{ job.title }}</h2>
-        <p>{{ job.description }}</p>
-        <div class="job-info">
-          <span><i class="fas fa-dollar-sign"></i> Budget: {{ job.budget }}</span>
-          <span><i class="fas fa-calendar-alt"></i> Deadline: {{ job.deadline }}</span>
-        </div>
-        <div class="btns">
-          <button (click)="viewApplications(job.id)">View Applications</button>
-          <button (click)="viewSubmissions(job.id)">View Submissions</button>
-        </div>
-      </div>
+      <table class="job-table">
+        <thead>
+          <tr>
+            <th>Cover Photo</th>
+            <th>Job Title</th>
+            <th>Description</th>
+            <th>Budget</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let job of clientJobs">
+            <td>
+              <img [src]="job.coverPhoto" alt="Job Image" class="cover-photo">
+            </td>
+            <td>{{ job.title }}</td>
+            <td>{{ job.description }}</td>
+            <td>${{ job.budget }}</td>
+            <td>{{ job.deadline }}</td>
+            <td>
+              <button class="view-btn" (click)="viewApplications(job.id)">View Applications</button>
+              <button class="view-btn" (click)="viewSubmissions(job.id)">View Submissions</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </section>
-
+    
     <ng-template #noJobs>
       <p>No jobs found.</p>
     </ng-template>
+    
 
     <!-- Applications Modal -->
     <div class="modal" *ngIf="showApplicationsModal">
@@ -55,17 +72,28 @@
         </div>
 
         <div *ngFor="let app of jobApplications" class="application-card">
-          <p><strong>Freelancer:</strong> {{ app.freelancerName }}</p>
-          <p><strong>Cover Letter:</strong> {{ app.coverLetter }}</p>
-          <p><strong>Status:</strong> <span [ngClass]="{
-            'pending': app.status === 'pending',
-            'accepted': app.status === 'accepted',
-            'rejected': app.status === 'rejected'
-          }">{{ app.status }}</span></p>
-
-          <button *ngIf="app.status === 'pending'" (click)="updateApplicationStatus(app.id, 'accepted')">Accept</button>
-          <button *ngIf="app.status === 'pending'" (click)="updateApplicationStatus(app.id, 'rejected')">Reject</button>
+          <div class="app-header">
+            <h3>{{ app.freelancer_id }}</h3>
+            <span class="status" [ngClass]="{
+              'pending': app.status === 'pending',
+              'accepted': app.status === 'accepted',
+              'rejected': app.status === 'rejected'
+            }">{{ app.status }}</span>
+          </div>
+        
+          <p class="cover-letter"><strong>Cover Letter:</strong> {{ app.cover_letter }}</p>
+        
+          <div class="app-actions" *ngIf="app.status === 'pending'">
+            <button class="profil-btn" (click)="viewFreelancerProfile(app.freelancer_id)">Visit Profile</button>
+            <button class="accept-btn" (click)="updateApplicationStatus(app.id, 'accepted')">
+              <i class="fas fa-check-circle"></i> Accept
+            </button>
+            <button class="reject-btn" (click)="updateApplicationStatus(app.id, 'rejected')">
+              <i class="fas fa-times-circle"></i> Reject
+            </button>
+          </div>
         </div>
+        
       </div>
     </div>
     <!-- Submissions Modal -->
@@ -79,7 +107,7 @@
     </div>
 
     <div *ngFor="let submission of jobSubmissions" class="submission-card">
-      <p><strong>Freelancer:</strong> {{ submission.freelancerName }}</p>
+      <p><strong>Freelancer:</strong> {{ submission.freelancer_id }}</p>
       <p><strong>Submission Link:</strong> <a [href]="submission.submission_link" target="_blank">{{ submission.submission_link }}</a></p>
       <p><strong>Notes:</strong> {{ submission.notes || 'No additional notes' }}</p>
 
@@ -88,5 +116,18 @@
     </div>
   </div>
 </div>
+<!-- Freelancer Profile Modal -->
+<div class="modal" *ngIf="selectedFreelancerProfile">
+  <div class="modal-content">
+    <span class="close" (click)="selectedFreelancerProfile = null">&times;</span>
+    <h2>{{ selectedFreelancerProfile.Username }}'s Profile</h2>
+    <img [src]="selectedFreelancerProfile.profile_picture" alt="Profile Picture" class="profile-pic">
+    <p><strong>Email:</strong> {{ selectedFreelancerProfile.Email }}</p>
+    <p><strong>Phone:</strong> {{ selectedFreelancerProfile.phonenumber }}</p>
+    <p><strong>Skills:</strong> {{ selectedFreelancerProfile.skills }}</p>
+    <p><strong>Bio:</strong> {{ selectedFreelancerProfile.bio }}</p>
+  </div>
+</div>
+
   </div>
 </div>

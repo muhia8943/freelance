@@ -35,3 +35,11 @@ Content-Type: application/json
 GET http://localhost:3000/api/job-completion/submissions/8
 Content-Type: application/json
 
+#####################################
+POST http://localhost:3000/api/job-completion/jobs/rate
+Content-Type: application/json
+
+{
+    "jobId": 10,
+    "rating": 4.5
+}

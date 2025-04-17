@@ -88,5 +88,33 @@ export class JobController {
             res.status(500).json({ error: 'Error retrieving completed jobs', details: error.message });
         }
     }
+    public async getCompletedJobsByClientId(req: Request, res: Response): Promise<void> {
+        try {
+            const clientId = parseInt(req.params.clientId);
+            if (isNaN(clientId)) {
+                res.status(400).json({ error: 'Invalid client ID' });
+                return;
+            }
     
+            const jobs = await jobService.getCompletedJobsByClientId(clientId);
+            res.status(200).json(jobs);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving completed jobs', details: error.message });
+        }
+    }
+    // ✅ Get Completed Jobs by Freelancer (completed_by)
+    public async getCompletedJobsByFreelancerId(req: Request, res: Response): Promise<void> {
+        try {
+            const freelancerId = parseInt(req.params.freelancerId);
+            if (isNaN(freelancerId)) {
+                res.status(400).json({ error: 'Invalid freelancer ID' });
+                return;
+            }
+
+            const jobs = await jobService.getCompletedJobsByFreelancerId(freelancerId);
+            res.status(200).json(jobs);
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error retrieving completed jobs by freelancer ID', details: error.message });
+        }
+    }
 }

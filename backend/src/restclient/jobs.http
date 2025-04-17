@@ -30,7 +30,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/jobs
 
 ### get a job by ID
-GET http://localhost:3000/api/jobs/4
+GET http://localhost:3000/api/jobs/9
 
 ### delete a job by ID
 DELETE http://localhost:3000/api/jobs/7
@@ -47,3 +47,9 @@ GET http://localhost:3000/api/jobs/completed
 
 ################################
 
+### job completed and for only client 
+GET http://localhost:3000/api/jobs/completed/client/12
+
+################################
+### job completed by freelancer
+GET http://localhost:3000/api/jobs/completed/freelancer/14

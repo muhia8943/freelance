@@ -164,5 +164,24 @@ class AuthService {
             return this.getUsersByRole('user');
         });
     }
+    countUsersByRole(role) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            const result = yield pool.request()
+                .input('role', sql.NVarChar, role)
+                .query('SELECT COUNT(*) as total FROM Users WHERE Role = @role');
+            return result.recordset[0].total;
+        });
+    }
+    getTotalClients() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.countUsersByRole('client');
+        });
+    }
+    getTotalFreelancers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.countUsersByRole('user');
+        });
+    }
 }
 exports.AuthService = AuthService;

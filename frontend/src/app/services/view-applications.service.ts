@@ -34,4 +34,8 @@ export class ViewApplicationsService {
   rejectSubmission(submissionId: number, reason: string): Observable<any> {
     return this.http.post(`${this.submissionUrl}/reject`, { submission_id: submissionId, reason });
   }
+  getFreelancerProfile(userId: number) {
+    return this.http.get<any>(`http://localhost:3000/api/auth/profile/${userId}`);
+  }
+  
 }

@@ -53,4 +53,21 @@ export class JobCompletionController {
             res.status(500).json({ error: error.message });
         }
     }
+    // Controller method to submit a rating for a completed job
+public async rateCompletedJob(req: Request, res: Response): Promise<any> {
+    try {
+        const { jobId, rating } = req.body;
+
+        if (!jobId || rating === undefined) {
+            return res.status(400).json({ error: 'jobId and rating are required.' });
+        }
+
+        await jobCompletionService.rateCompletedJob(jobId, rating);
+        res.status(200).json({ message: 'Rating submitted successfully!' });
+    } catch (error: any) {
+        console.error('Error rating job:', error.message);
+        res.status(500).json({ error: error.message });
+    }
+}
+
 }

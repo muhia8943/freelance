@@ -4,55 +4,98 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background: #f0f4f8;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Decorative curved background */
+  .header-shape {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    width: 100%;
+    height: 300px;
     background: linear-gradient(135deg, #1e3c72, #2a5298);
-}
-.register-container {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    clip-path: ellipse(70% 100% at 50% 0%);
+    z-index: 0;
+  }
+  
+  .register-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 300px;
-    
-}
-.register-form h2 {
-    color: #fff;
-    margin-bottom: 1rem;
-}
-.input-group {
-    margin-bottom: 1rem;
-}
-.input-group label {
+    width: 320px;
+    z-index: 1;
+    position: relative;
+  }
+  
+  .register-container h2 {
+    color: #000000;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+  
+  .input-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+  }
+  
+  .input-group label {
     display: block;
-    color: #fff;
-    margin-bottom: 0.3rem;
-}
-.input-group input {
+    color: #000000;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+  }
+  
+  .input-group input {
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     outline: none;
-}
-.role-selection {
+    font-size: 1rem;
+    background-color: #5e5c5c;
+
+  }
+  
+  .role-selection {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    color: #fff;
-    margin: 10px 0;
-}
-button {
+    gap: 15px;
+    color: #000000;
+    margin: 15px 0;
+    font-size: 0.95rem;
+  }
+  
+  button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
-    background:#30b5b3;
+    border-radius: 6px;
+    background: #3fdba4;
     color: white;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
-}
-button:hover {
-    background: #5fb9b8;
-}
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background: #30b5b3;
+  }
+  
+  p {
+    margin-top: 1rem;
+    color: #000000;
+    font-size: 0.9rem;
+  }
+  
+  a {
+    color: #3fdba4;
+    text-decoration: none;
+  }
+  

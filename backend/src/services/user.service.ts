@@ -129,5 +129,21 @@ export class AuthService {
     public async getRegularUsers(): Promise<user[]> {
         return this.getUsersByRole('user');
     }
-    
+    public async countUsersByRole(role: string): Promise<number> {
+        const pool = await poolPromise;
+        const result = await pool.request()
+            .input('role', sql.NVarChar, role)
+            .query('SELECT COUNT(*) as total FROM Users WHERE Role = @role');
+        
+        return result.recordset[0].total;
+    }
+
+    public async getTotalClients(): Promise<number> {
+        return this.countUsersByRole('client');
+    }
+
+    public async getTotalFreelancers(): Promise<number> {
+        return this.countUsersByRole('user');
+    }
+
 }

@@ -1,0 +1,67 @@
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">UniTask</div>
+            <ul class="nav">
+              <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+              <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+              <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+              <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+              <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+              <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+              <li><a><i class="fas fa-sign-out-alt"></i> Payments</a></li>
+              <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+              <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+    
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="payments-container">
+                <h2>Completed Jobs for Payment</h2>
+              
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                      <th>Freelancer</th>
+                      <th>Budget</th>
+                      <th>Completion Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let job of completedJobs">
+                      <td>{{ job.title }}</td>
+                      <td>{{ job.completed_by }}</td>
+                      <td>${{ job.budget }}</td>
+                      <td>{{ job.completed_at | date:'medium' }}</td>
+                      <td>
+                        <button (click)="makePayment(job)">Pay Now</button>
+                        <button (click)="openRatingModal(job.id)">Rate Work</button> <!-- Pass job id here -->
+                      </td>
+                      
+                      <!-- Rating input should only appear for the selected job -->
+                      <div *ngIf="selectedJob">
+                        <div class="rating-modal">
+                          <label for="rating">Rate Job: {{ selectedJob.title }}</label>
+                          <input [(ngModel)]="rating" type="number" min="1" max="5" step="0.1" required />
+                          <button (click)="submitRating()">Submit Rating</button>
+                          <button (click)="closeRatingModal()">Cancel</button>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      
+                    </tr>
+                  </tbody>
+                </table>
+              
+                <div *ngIf="completedJobs.length === 0">
+                  <p>No completed jobs available for payment.</p>
+                </div>
+              </div>
+              
+        </div>
+    </div>
+</body>

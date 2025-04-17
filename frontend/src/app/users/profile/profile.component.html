@@ -10,49 +10,62 @@
           <li><a routerLink="/myjobs"><i class="fas fa-briefcase"></i> <span>My Jobs</span></a></li>
           <li><a routerLink="/profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
           <li><a routerLink="/chat"><i class="fas fa-comments"></i> <span>Chat</span></a></li>
+          <li><a routerLink="/ratings"><i class="fas fa-briefcase"></i> <span>Completed Jobs</span></a></li>
           <li><a routerLink="/settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
           <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a></li>
-      </ul>      
+      </ul>     
         
       </div>
   
-      <!-- Main Content -->
-      <div class="main-content">
-        <h2>Update Profile</h2>
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter your username">
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="profile-container">
+            <h2>My Profile</h2>
+            
+            <!-- Profile Info -->
+            <div class="profile-card" *ngIf="userProfile">
+              <img [src]="userProfile.profile_picture || 'assets/default-profile.png'" alt="Profile Picture" class="profile-img">
+              <h3>{{ userProfile.Username }}</h3>
+              <p><strong>Email:</strong> {{ userProfile.Email }}</p>
+              <p><strong>Phone:</strong> {{ userProfile.phonenumber || 'Not set' }}</p>
+              <p><strong>Skills:</strong> {{ userProfile.skills || 'Not set' }}</p>
+              <p><strong>Bio:</strong> {{ userProfile.bio || 'Not set' }}</p>
+
+              <button (click)="toggleEdit()" class="edit-btn">{{ isEditing ? 'Cancel' : 'Edit Profile' }}</button>
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter your email">
-            </div>
-            <div class="form-group">
-                <label for="phonenumber">Phone Number</label>
-                <input type="text" id="phonenumber" placeholder="Enter your phone number">
-            </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select id="role">
-                    <option value="user">Client</option>
-                    <option value="manager">Freelancer</option>
+          
+            <!-- Edit Profile Form -->
+            <div *ngIf="isEditing">
+              <form [formGroup]="profileForm" (ngSubmit)="saveProfile()" class="profile-form">
+                <label>Username</label>
+                <input type="text" formControlName="username">
+                
+                <label>Email</label>
+                <input type="email" formControlName="email">
+          
+                <label>Phone</label>
+                <input type="text" formControlName="phonenumber">
+          
+                <label>Skills</label>
+                <input type="text" formControlName="skills">
+          
+                <label>Bio</label>
+                <textarea formControlName="bio"></textarea>
+          
+                <label>Profile Picture (URL)</label>
+                <input type="text" formControlName="profile_picture">
+
+                <label>Role</label>
+                <select formControlName="role">
+                  <!-- <option value="client">Client</option> -->
+                  <option value="user">Freelancer</option>
                 </select>
+          
+                <button type="submit" class="save-btn">Save Changes</button>
+              </form>
             </div>
-            <div class="form-group">
-                <label for="skills">Skills</label>
-                <input type="text" id="skills" placeholder="Enter your skills">
-            </div>
-            <div class="form-group">
-                <label for="bio">Bio</label>
-                <textarea id="bio" placeholder="Tell us about yourself"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="profile_picture">Profile Picture</label>
-                <input type="file" id="profile_picture">
-            </div>
-            <button type="submit">Update Profile</button>
-        </form>
+          </div>
+          
     </div>
 </div>
   

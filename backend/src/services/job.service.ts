@@ -68,4 +68,22 @@ export class JobService {
         
         return result.recordset;
     }
+    public async getCompletedJobsByClientId(clientId: number): Promise<Job[]> {
+        const pool = await poolPromise;
+        const result = await pool.request()
+            .input('client_id', sql.Int, clientId)
+            .execute('spGetCompletedJobsByClientId');
+    
+        return result.recordset;
+    }
+    public async getCompletedJobsByFreelancerId(freelancerId: number): Promise<Job[]> {
+        const pool = await poolPromise;
+        const result = await pool.request()
+            .input('completed_by', sql.Int, freelancerId)
+            .execute('spGetCompletedJobsByFreelancerId');
+    
+        return result.recordset;
+    }
+    
+    
 }

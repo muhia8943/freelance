@@ -1,0 +1,59 @@
+<body>
+    <div class="dashboard">
+            <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">UniTask Admin</div>
+        <ul class="nav">
+          <li><a routerLink="/admindashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          <li><a routerLink="/manageusers"><i class="fas fa-users"></i> Manage Users</a></li>
+          <li><a routerLink="/managejobs"><i class="fas fa-briefcase"></i> Manage Jobs</a></li>
+          <li><a routerLink="/transactions"><i class="fas fa-dollar-sign"></i> Transactions</a></li>
+          <li><a routerLink="/reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
+          <li><a routerLink="/adminsettings"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="main-content">
+        <div class="manage-jobs">
+          <h2>All Job Listings</h2>
+        
+          <table class="job-table" *ngIf="allJobs.length > 0; else noJobs">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client ID</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Skills</th>
+                <th>Budget</th>
+                <th>Deadline</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let job of allJobs">
+                <td>{{ job.id }}</td>
+                <td>{{ job.client_id }}</td>
+                <td>{{ job.title }}</td>
+                <td>{{ job.description }}</td>
+                <td>{{ job.required_skills }}</td>
+                <td>${{ job.budget }}</td>
+                <td>{{ job.deadline | date: 'mediumDate' }}</td>
+                <td>{{ job.status }}</td>
+                <td>
+                  <button class="delete-btn" (click)="deleteJob(job.id)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+          <ng-template #noJobs>
+            <p>No jobs found.</p>
+          </ng-template>
+        </div>
+        
+      </div>
+    </div>
+</body>

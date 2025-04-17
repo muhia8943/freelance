@@ -93,4 +93,22 @@ export class AuthController {
             res.status(500).json({ error: 'Error retrieving users', details: error.message });
         }
     }
+    public async getTotalClients(req: Request, res: Response): Promise<void> {
+        try {
+            const count = await authService.getTotalClients();
+            res.status(200).json({ totalClients: count });
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error counting clients', details: error.message });
+        }
+    }
+
+    public async getTotalFreelancers(req: Request, res: Response): Promise<void> {
+        try {
+            const count = await authService.getTotalFreelancers();
+            res.status(200).json({ totalFreelancers: count });
+        } catch (error: any) {
+            res.status(500).json({ error: 'Error counting freelancers', details: error.message });
+        }
+    }
+
 }

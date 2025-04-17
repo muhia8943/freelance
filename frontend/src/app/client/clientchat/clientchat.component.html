@@ -1,54 +1,59 @@
-<div class="chat-dashboard">
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo">UniTask</div>
-    <ul class="nav">
-      <li><a routerLink="/clientdashboard"><i class="fas fa-home"></i> Home</a></li>
-      <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
-      <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
-      <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
-      <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
-      <li><a routerLink="/clientchat" class="active"><i class="fas fa-comments"></i> Chat</a></li>
-      <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
-      <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-    </ul>
-  </div>
-
-  <!-- Chat Section -->
-  <div class="chat-container">
-    <!-- Contacts Sidebar -->
-    <div class="contacts">
-      <h2>Messages</h2>
-      <div class="contact-list">
-        <div 
-          *ngFor="let conversation of conversations" 
-          class="contact" 
-          (click)="selectConversation(conversation)">
-          <img src="{{ conversation.freelancerProfilePicture || '/assets/default-profile.jpg' }}" alt="User">
-          <div class="contact-info">
-            <h4>{{ conversation.freelancerName }}</h4>
-            <p>{{ conversation.lastMessage || 'Start a conversation' }}</p>
+<body>
+  <div class="chat-dashboard">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo">UniTask</div>
+      <ul class="nav">
+        <li><a routerLink="/clientdashboard" class="active"><i class="fas fa-home"></i> Home</a></li>
+        <li><a routerLink="/discoverfreelancers"><i class="fas fa-search"></i> Discover Freelancers</a></li>
+        <li><a routerLink="/mytasks"><i class="fas fa-briefcase"></i> My Jobs</a></li>
+        <li><a routerLink="/createjobs"><i class="fas fa-plus-circle"></i> Create Job</a></li>
+        <li><a routerLink="/clientprofile"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a routerLink="/clientchat"><i class="fas fa-comments"></i> Chat</a></li>
+        <li><a routerLink="/payments"><i class="fas fa-sign-out-alt"></i> Payments</a></li>
+        <li><a routerLink="/clientsettings"><i class="fas fa-cog"></i> Settings</a></li>
+        <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+  
+      </ul>
+    </div>
+  
+    <!-- Chat Section -->
+    <div class="chat-container">
+      <!-- Contacts Sidebar -->
+      <div class="contacts">
+        <h2>Messages</h2>
+        <div class="contact-list">
+          <div 
+            *ngFor="let conversation of conversations" 
+            class="contact" 
+            (click)="selectConversation(conversation)">
+            <img src="{{ conversation.freelancerProfilePicture || '/assets/default-profile.jpg' }}" alt="User">
+            <div class="contact-info">
+              <h4>{{ conversation.freelancerName }}</h4>
+              <p>{{ conversation.lastMessage || 'Start a conversation' }}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Chat Window -->
-    <div class="chat-box" *ngIf="selectedConversation">
-      <div class="chat-header">
-        <h3>{{ selectedConversation.freelancerName }}</h3>
-      </div>
-      <div class="chat-messages">
-        <div *ngFor="let msg of messages" 
-             [ngClass]="{'message received': msg.sender_id !== clientId, 'message sent': msg.sender_id === clientId}">
-          <p>{{ msg.message_text }}</p>
+  
+      <!-- Chat Window -->
+      <div class="chat-box" *ngIf="selectedConversation">
+        <div class="chat-header">
+          <h3>{{ selectedConversation.freelancerName }}</h3>
         </div>
-      </div>
-      
-      <div class="chat-input">
-        <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..." (keyup.enter)="sendMessage()">
-        <button (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        <div class="chat-messages">
+          <div *ngFor="let msg of messages" 
+               [ngClass]="{'message received': msg.sender_id !== clientId, 'message sent': msg.sender_id === clientId}">
+            <p>{{ msg.message_text }}</p>
+          </div>
+        </div>
+        
+        <div class="chat-input">
+          <input type="text" [(ngModel)]="newMessage" placeholder="Type a message..." (keyup.enter)="sendMessage()">
+          <button (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  
+</body>

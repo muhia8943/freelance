@@ -19,3 +19,11 @@ ALTER TABLE Jobs ADD
 GO
 ALTER TABLE Jobs 
 ADD coverPhoto VARCHAR(255) NULL;
+GO
+ALTER TABLE Jobs 
+ADD payment_status VARCHAR(20) NOT NULL DEFAULT 'not paid' 
+    CHECK (payment_status IN ('not paid', 'paid'));
+GO
+ALTER TABLE Jobs
+ADD ratings DECIMAL(2,1) NULL
+    CHECK (ratings >= 1.0 AND ratings <= 5.0);

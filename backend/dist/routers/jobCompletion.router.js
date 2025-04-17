@@ -11,4 +11,5 @@ router.post('/reject', (req, res) => jobCompletionController.rejectWork(req, res
 router.get('/submissions', (req, res) => jobCompletionController.getAllSubmissions(req, res));
 // Get submissions by job ID
 router.get('/submissions/:job_id', (req, res) => jobCompletionController.getSubmissionsByJobId(req, res));
+router.post('/jobs/rate', (req, res) => jobCompletionController.rateCompletedJob(req, res)); // ✅ Correct
 exports.default = router;

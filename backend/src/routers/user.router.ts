@@ -13,5 +13,7 @@ router.put('/users/:id', updateUser);
 router.get('/profile/:id', getProfile); // New Route for Profile Retrieval
 router.get('/clients', authController.getClients);
 router.get('/freelancers', authController.getRegularUsers);
+router.get('/total-clients', authController.getTotalClients);
+router.get('/total-freelancers', authController.getTotalFreelancers);
 
 export default router;

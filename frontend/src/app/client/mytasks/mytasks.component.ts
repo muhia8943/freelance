@@ -19,6 +19,8 @@ export class MytasksComponent implements OnInit {
   jobSubmissions: any[] = []; // Stores job submissions
   showApplicationsModal: boolean = false;
   showSubmissionsModal: boolean = false;
+  selectedFreelancerProfile: any = null;
+
 
   constructor(
     private jobService: JobService, 
@@ -49,6 +51,7 @@ export class MytasksComponent implements OnInit {
     this.selectedJobId = jobId;
     this.viewApplicationsService.getApplicationsByJob(jobId).subscribe({
       next: (applications) => {
+        console.log('Fetched Applications:', applications); // Debugging
         this.jobApplications = applications;
         this.showApplicationsModal = true;
       },
@@ -57,6 +60,7 @@ export class MytasksComponent implements OnInit {
       }
     });
   }
+  
 
   // Approve or Reject an application
   updateApplicationStatus(applicationId: number, status: string) {
@@ -112,4 +116,15 @@ export class MytasksComponent implements OnInit {
       error: (error) => console.error('Failed to reject submission:', error)
     });
   }
+  viewFreelancerProfile(userId: number) {
+    this.viewApplicationsService.getFreelancerProfile(userId).subscribe({
+      next: (profile) => {
+        this.selectedFreelancerProfile = profile;
+      },
+      error: (error) => {
+        console.error('Failed to fetch freelancer profile:', error);
+      }
+    });
+  }
+  
 }

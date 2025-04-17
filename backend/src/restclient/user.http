@@ -29,28 +29,28 @@ Content-Type: application/json
 ###
 
 ### Delete a User
-DELETE http://localhost:3000/api/auth/users/13
+DELETE http://localhost:3000/api/auth/users/1
 Content-Type: application/json
 
 ###
 
 ### Update a User
-PUT http://localhost:3000/api/auth/users/6
+PUT http://localhost:3000/api/auth/users/10
 Content-Type: application/json
 
 {
-    "username": "samuelll",
-    "email": "samuelll@gmail.com",
+    "username": "mary",
+    "email": "mary@gmail.com",
     "role": "user",
-    "phonenumber": "860773332",
-    "profile_picture": "https://media.istockphoto.com/id/1682296067/photo/happy-studio-portrait-or-professional-man-real-estate-agent-or-asian-businessman-smile-for.jpg?s=612x612&w=0&k=20&c=9zbG2-9fl741fbTWw5fNgcEEe4ll-JegrGlQQ6m54rg=",
+    "phonenumber": "86077332",
+    "profile_picture": "https://www.shutterstock.com/image-photo/happy-attractive-african-business-leader-600nw-2451794349.jpg",
     "skills":"Quality Assurance, web development ",
-    "bio": "I am the admin with all permissions"
+    "bio": "Hi, I’m a passionate and results-driven freelancer specializing in web development and UI/UX design.\nWith over 3 years of experience, I help startups and businesses build responsive, high-performing websites and applications. I'm skilled in HTML, CSS, JavaScript, Angular, and Node.js, and I love turning complex problems into elegant solutions.\n\nI’m committed to delivering quality work, meeting deadlines, and exceeding expectations. Let’s build something great together!"
 }
 #####
 
 ### Get Profile by User ID
-GET http://localhost:3000/api/auth/profile/11
+GET http://localhost:3000/api/auth/profile/14
 Content-Type: application/json
 
 ################################
@@ -62,4 +62,16 @@ Content-Type: application/json
 
 ### get users
 GET http://localhost:3000/api/auth/freelancers
+Content-Type: application/json
+
+################################
+
+### 🔢 Get Total Number of Clients
+GET http://localhost:3000/api/auth/total-clients
+Content-Type: application/json
+
+###
+
+### 🔢 Get Total Number of Freelancers
+GET http://localhost:3000/api/auth/total-freelancers
 Content-Type: application/json

@@ -11,12 +11,12 @@ Content-Type: application/json
 ################################
 
 ### Get Applications by Job
-GET http://localhost:3000/api/job-applications/job/4
+GET http://localhost:3000/api/job-applications/job/6
 
 ################################
 
 ### Get Applications by Freelancer
-GET http://localhost:3000/api/job-applications/freelancer/10
+GET http://localhost:3000/api/job-applications/freelancer/14
 
 ################################
 

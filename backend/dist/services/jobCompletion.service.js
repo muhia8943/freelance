@@ -96,5 +96,17 @@ class JobCompletionService {
             return result.recordset;
         });
     }
+    rateCompletedJob(jobId, rating) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            if (rating < 1.0 || rating > 5.0) {
+                throw new Error("Rating must be between 1.0 and 5.0");
+            }
+            yield pool.request()
+                .input('rating', sql.Decimal(2, 1), rating)
+                .input('job_id', sql.Int, jobId)
+                .query('UPDATE Jobs SET ratings = @rating WHERE id = @job_id');
+        });
+    }
 }
 exports.JobCompletionService = JobCompletionService;

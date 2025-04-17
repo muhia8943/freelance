@@ -18,6 +18,7 @@ body {
   min-height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
   width: 250px;
   background-color: #2c3e50;
@@ -115,39 +116,88 @@ header h1 {
   background: #16a085;
 }
 
-/* Job Listings */
-.job-details {
+/* Job Table */
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
   background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 20px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-.job-details:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+.job-table th, .job-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 
-.job-details h2 {
-  color: #2c3e50;
-  font-size: 22px;
+.job-table th {
+  background-color: #23ced4;
+  color: #fff;
+  font-weight: bold;
+}
+
+.job-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.cover-photo {
+  width: 80px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.view-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #23ced4;
+  color: white;
+  transition: 0.3s;
   margin-bottom: 10px;
 }
 
-.job-details p {
-  color: #555;
-  font-size: 16px;
-  margin-bottom: 12px;
+.view-btn:hover {
+  background-color: #1ba5a9;
 }
 
-.job-info {
+/* Modal */
+.modal {
   display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #666;
-  font-weight: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Applications & Submissions Cards */
+.application-card, .submission-card {
+  background: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
 }
 
 /* Responsive Design */
@@ -187,55 +237,202 @@ header h1 {
       width: 150px;
   }
 }
-.cover-photo {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
-}
-.modal {
-  display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
-  width: 50%;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.close {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-}
-
 .application-card {
-  background: #f9f9f9;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5px;
+  background: #ffffff;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 }
-.btns{
+
+.application-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Header section with name and status */
+.app-header {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.btns button{
-  padding: 8px 15px;
+.app-header h3 {
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Status styles */
+.status {
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.pending {
+  background: #ffeb3b;
+  color: #856404;
+}
+
+.accepted {
+  background: #28a745;
+  color: white;
+}
+
+.rejected {
+  background: #dc3545;
+  color: white;
+}
+
+/* Cover Letter */
+.cover-letter {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+.app-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+  gap: 5px;
+}
+
+.app-actions button {
+  flex: 1;
+  padding: 8px 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #23ced4;
+  font-weight: 600;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
+
+.accept-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #218838;
+}
+
+.reject-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.reject-btn:hover {
+  background-color: #c82333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Submission Cards */
+.submission-card {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border-left: 5px solid #007bff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.submission-card:hover {
+  transform: scale(1.02);
+}
+
+/* Submission Info */
+.submission-card p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+/* Submission Link */
+.submission-card a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.submission-card a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.submission-card button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.submission-card button:first-child {
+  background: #28a745;
+  color: white;
+  margin-right: 5px;
+}
+
+.submission-card button:first-child:hover {
+  background: #218838;
+}
+
+.submission-card button:last-child {
+  background: #dc3545;
+  color: white;
+}
+
+.submission-card button:last-child:hover {
+  background: #c82333;
+}
+
+/* No Submissions Message */
+.no-submissions {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.modal .profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+

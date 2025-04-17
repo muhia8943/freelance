@@ -3,64 +3,80 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
-/* Body Styling */
 body {
+  font-family: 'Arial', sans-serif;
   background-color: #f4f7f6;
   color: #333;
 }
 
-/* Chat Dashboard Layout */
-.chat-dashboard {
+/* Dashboard Layout */
+.dashboard {
   display: flex;
 }
 
-/* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 60px;  /* Collapsed width */
   background-color: #2c3e50;
-  color: white;
+  color: #fff;
   height: 100vh;
   position: fixed;
   padding: 20px;
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+  z-index: 10;
+}
+.sidebar .nav li a:hover {
+  background-color: #597c9f;
+}
+/* Expand Sidebar on Hover */
+.sidebar:hover {
+  width: 250px;  /* Expanded width */
 }
 
-.sidebar .logo {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
+/* Nav Items */
 .sidebar .nav {
   list-style: none;
+  padding: 0;
+  margin-top: 30px;
 }
 
 .sidebar .nav li {
-  margin: 15px 0;
+  margin: 20px 0px;
 }
 
+/* Show Icons Always, Hide Text When Collapsed */
 .sidebar .nav li a {
-  color: white;
+  color: #fff;
   text-decoration: none;
   display: flex;
   align-items: center;
   padding: 10px;
   border-radius: 5px;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.sidebar .nav li a:hover,
-.sidebar .nav li a.active {
-  background-color: #23ced4;
+.sidebar .nav li a i {
+  margin-right: 10px;
+  font-size: 18px;
 }
 
+/* When Sidebar is Collapsed, Only Show Icons */
+.sidebar:not(:hover) .nav li a span {
+  display: none;
+}
+.sidebar .logo img {
+  width: 35px;
+  height: 35px;
+
+}
 /* Chat Container */
 .chat-container {
   display: flex;
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: 50px;
   height: 100vh;
 }
 
@@ -140,7 +156,7 @@ body {
 
 /* Received Messages */
 .message.received {
-  background-color: #f1f1f1;
+  background-color: #95f688;
   color: black;
   align-self: flex-start;
   text-align: left;
@@ -152,7 +168,7 @@ body {
   display: flex;
   border-top: 1px solid #ddd;
   padding: 10px;
-  background-color: white;
+  background-color: rgb(143, 142, 142);
 }
 
 .chat-input input {

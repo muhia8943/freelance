@@ -111,5 +111,27 @@ class AuthController {
             }
         });
     }
+    getTotalClients(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const count = yield authService.getTotalClients();
+                res.status(200).json({ totalClients: count });
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error counting clients', details: error.message });
+            }
+        });
+    }
+    getTotalFreelancers(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const count = yield authService.getTotalFreelancers();
+                res.status(200).json({ totalFreelancers: count });
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error counting freelancers', details: error.message });
+            }
+        });
+    }
 }
 exports.AuthController = AuthController;

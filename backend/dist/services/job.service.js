@@ -117,5 +117,23 @@ class JobService {
             return result.recordset;
         });
     }
+    getCompletedJobsByClientId(clientId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            const result = yield pool.request()
+                .input('client_id', sql.Int, clientId)
+                .execute('spGetCompletedJobsByClientId');
+            return result.recordset;
+        });
+    }
+    getCompletedJobsByFreelancerId(freelancerId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const pool = yield sql_config_1.poolPromise;
+            const result = yield pool.request()
+                .input('completed_by', sql.Int, freelancerId)
+                .execute('spGetCompletedJobsByFreelancerId');
+            return result.recordset;
+        });
+    }
 }
 exports.JobService = JobService;

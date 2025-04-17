@@ -73,5 +73,22 @@ class JobCompletionController {
             }
         });
     }
+    // Controller method to submit a rating for a completed job
+    rateCompletedJob(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { jobId, rating } = req.body;
+                if (!jobId || rating === undefined) {
+                    return res.status(400).json({ error: 'jobId and rating are required.' });
+                }
+                yield jobCompletionService.rateCompletedJob(jobId, rating);
+                res.status(200).json({ message: 'Rating submitted successfully!' });
+            }
+            catch (error) {
+                console.error('Error rating job:', error.message);
+                res.status(500).json({ error: error.message });
+            }
+        });
+    }
 }
 exports.JobCompletionController = JobCompletionController;

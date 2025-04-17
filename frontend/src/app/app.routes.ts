@@ -16,6 +16,10 @@ import { ClientprofileComponent } from './client/clientprofile/clientprofile.com
 import { DiscoverFreelancersComponent } from './client/discover-freelancers/discover-freelancers.component';
 import { ClientsettingsComponent } from './client/clientsettings/clientsettings.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { PaymentsComponent } from './client/payments/payments.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
+import { ManageJobsComponent } from './admin/manage-jobs/manage-jobs.component';
+import { RatingsComponent } from './users/ratings/ratings.component';
 
 export const routes: Routes = [
     {path: '', component:LandingComponent},
@@ -35,5 +39,9 @@ export const routes: Routes = [
     {path:'clientprofile', component: ClientprofileComponent},
     {path: 'discoverfreelancers', component: DiscoverFreelancersComponent},
     {path:'clientsettings', component:ClientsettingsComponent},
-    {path:'admindashboard', component:AdminDashboardComponent}
+    {path:'admindashboard', component:AdminDashboardComponent},
+    {path:'payments',component:PaymentsComponent},
+    {path:'manageusers',component:ManageUsersComponent},
+    {path:'managejobs', component:ManageJobsComponent},
+    {path:'ratings', component:RatingsComponent}
 ];

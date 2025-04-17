@@ -14,4 +14,6 @@ router.get('/submissions', (req, res) => jobCompletionController.getAllSubmissio
 // Get submissions by job ID
 router.get('/submissions/:job_id', (req, res) => jobCompletionController.getSubmissionsByJobId(req, res));
 
+router.post('/jobs/rate', (req, res) => jobCompletionController.rateCompletedJob(req, res)); // ✅ Correct
+
 export default router;

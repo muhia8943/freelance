@@ -109,5 +109,38 @@ class JobController {
             }
         });
     }
+    getCompletedJobsByClientId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const clientId = parseInt(req.params.clientId);
+                if (isNaN(clientId)) {
+                    res.status(400).json({ error: 'Invalid client ID' });
+                    return;
+                }
+                const jobs = yield jobService.getCompletedJobsByClientId(clientId);
+                res.status(200).json(jobs);
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error retrieving completed jobs', details: error.message });
+            }
+        });
+    }
+    // ✅ Get Completed Jobs by Freelancer (completed_by)
+    getCompletedJobsByFreelancerId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const freelancerId = parseInt(req.params.freelancerId);
+                if (isNaN(freelancerId)) {
+                    res.status(400).json({ error: 'Invalid freelancer ID' });
+                    return;
+                }
+                const jobs = yield jobService.getCompletedJobsByFreelancerId(freelancerId);
+                res.status(200).json(jobs);
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error retrieving completed jobs by freelancer ID', details: error.message });
+            }
+        });
+    }
 }
 exports.JobController = JobController;

@@ -46,8 +46,10 @@ export class ClientprofileComponent implements OnInit {
           phonenumber: [data.phonenumber],
           skills: [data.skills],
           bio: [data.bio],
-          profile_picture: [data.profile_picture]
+          profile_picture: [data.profile_picture],
+          role: [data.role] // ✅ Ensure role is included
         });
+        
       });
     }
   }

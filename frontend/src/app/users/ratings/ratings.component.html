@@ -1,0 +1,50 @@
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhGMAZpMhgP1mygh11ZOcFwaSuEZQOm9b-Mw&s" alt=""></div>
+            <ul class="nav">
+                <li><a routerLink="/userdashboard"><i class="fas fa-home"></i> <span>Home</span></a></li>
+                <li><a routerLink="/discover"><i class="fas fa-compass"></i> <span>Discover</span></a></li>
+                <li><a routerLink="/myjobs"><i class="fas fa-briefcase"></i> <span>My Jobs</span></a></li>
+                <li><a routerLink="/profile"><i class="fas fa-user"></i> <span>Profile</span></a></li>
+                <li><a routerLink="/chat"><i class="fas fa-comments"></i> <span>Chat</span></a></li>
+                <li><a routerLink="/ratings"><i class="fas fa-briefcase"></i> <span>Completed Jobs</span></a></li>
+                <li><a routerLink="/settings"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+                <li><a routerLink="/landing"><i class="fas fa-sign-out-alt"></i> <span>Sign Out</span></a></li>
+            </ul>    
+            
+          </div>
+          <div class="main-content">
+            <div class="completed-jobs-container">
+                <h2>Completed Jobs</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Budget</th>
+                            <th>Completed On</th>
+                            <th>Rating</th>
+                            <th>Payment Status</th> <!-- Add Payment Status Column -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let job of completedJobs">
+                            <td>{{ job.title }}</td>
+                            <td>{{ job.description }}</td>
+                            <td>${{ job.budget }}</td>
+                            <td>{{ job.completed_at | date: 'medium' }}</td>
+                            <td>{{ job.ratings }}</td>
+                            <td>{{ job.payment_status }}</td> <!-- Display Payment Status -->
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <div *ngIf="completedJobs.length === 0">
+                    <p>No completed jobs available.</p>
+                </div>
+            </div>
+            
+    </div>
+    </div>
+</body>
