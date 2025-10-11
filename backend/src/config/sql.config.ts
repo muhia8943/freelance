@@ -14,15 +14,15 @@ export const sqlConfig={
     idleTimeoutMillis: 30000
   },
   options: {
-    encrypt: false, // for azure
-    trustServerCertificate: true // change to true for local dev / self-signed certs
+    encrypt: true, // for azure
+    trustServerCertificate: false // change to true for local dev / self-signed certs
   }
 }
 
 export const poolPromise = new mssql.ConnectionPool(sqlConfig)
   .connect()
   .then(pool => {
-    console.log('Connected to MSSQL');
+    console.log('Connected to Azure SQL Database');
     return pool;
   })
   .catch(err => {

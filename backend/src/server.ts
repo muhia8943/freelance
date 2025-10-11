@@ -14,8 +14,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'http://localhost:4200' // Allow only this origin
+  origin: [
+    'http://localhost:4200',              // local dev
+    process.env.FRONTEND_URL || '*'       // deployed frontend (set in Render env vars)
+  ]
 }));
+
 
 app.use(express.json());
 app.use('/api/auth', userRouter);
